@@ -1,1 +1,4 @@
-@use './src/assets/style/reset.scss';
+@use './src/style/reset.scss';
+@use './src/style/general.scss';
+
+@use './src/style/header.scss';

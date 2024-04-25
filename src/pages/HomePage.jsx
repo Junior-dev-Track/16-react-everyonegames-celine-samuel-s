@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import Header from '../components/Header';
 
 function HomePage() {
     const [games, setGames] = useState([]);
@@ -12,16 +13,19 @@ function HomePage() {
     }, []);
 
     return (
-        <div>
+        <>
+            <Header />
+            <div>
             <h1>Welcome to the Home Page!</h1>
             <Link to='/about'>Go to About Page</Link>
             {games.map(game => (
                 <div key={game.id}>
-                    <h2>{game.name}</h2>
-                    <img src={game.background_image} alt={game.name} />
+                <h2>{game.name}</h2>
+                <img src={game.background_image} alt={game.name} />
                 </div>
             ))}
         </div>
+            </>
     );
 }
 
