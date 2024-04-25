@@ -5,6 +5,7 @@ import AboutPage from './pages/AboutPage';
 import AllGamesPage from './pages/AllGamesPage';
 import GamesPage from './pages/GamesPage';
 
+
 function App() {
     return (
         <BrowserRouter>

@@ -12,44 +12,54 @@
 .game_popular {
     display: flex;
     flex-direction: column;
-    align-items: center; // Alignement des enfants au centre horizontalement
-    text-align: center; // Centrage du texte
-
+    align-items: center;
+    text-align: center;
+  
     h2 {
-        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-        font-size: 35px;
-        margin: 20px 0; // Ajout d'une marge pour espacement
+      font-size: 24px;
+      color: #1e1e1e;
+      margin-bottom: 10px;
     }
-
+  
     img {
-        width: 740px;      // Fixe la largeur à 740 pixels
-        height: 416px;     // Fixe la hauteur à 416 pixels
-        object-fit: cover; // Assure que l'image couvre la zone sans déformer l'image
-        margin-bottom: 20px; // Espacement entre l'image et le bouton
-        border-radius: 30px 30px 0 0;
+      width: 740px;
+      height: 416px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 15px;
     }
-
-    button {
-        font-size: 18px;
-        padding: 10px 20px;
-        border: none;
+  
+    .metacritic-score {
+      padding: 8px 20px;
+      background-color: #ffcc00; // Couleur jaune Metacritic typique
+      color: #000;
+      font-weight: bold;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+  
+    .navigation-buttons {
+      display: flex;
+      justify-content: center; // Centre les boutons horizontalement
+      width: 100%; // Prend toute la largeur disponible
+      margin-top: 10px;
+  
+      button {
+        padding: 10px 15px;
+        font-size: 16px;
+        color: #fff;
         background-color: #007BFF;
-        color: white;
+        border: none;
         border-radius: 5px;
         cursor: pointer;
-        margin-bottom: 20px; // Espacement après le bouton
+        margin: 0 10px; // Espacement horizontal entre les boutons
+  
+        &:hover {
+          background-color: darken(#007BFF, 10%);
+        }
+      }
     }
-}
-
-.genres {
-    margin: 30px 0;
-    font-size: 16px;
-    color: #666;
-}
-
-.genre {
-    background-color: #eee;
-    padding: 5px 10px;
-    margin-right: 5px;
-    border-radius: 10px;
-}
+  }
+  
+  

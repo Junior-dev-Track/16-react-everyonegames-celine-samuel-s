@@ -30,15 +30,12 @@ export default function PopularGames() {
                 <div className='game_popular'>
                     <h2>{games[currentIndex].name}</h2>
                     <img src={games[currentIndex].background_image} alt={games[currentIndex].name}/>
-                    {games[currentIndex].genres && (
-                        <div className="genres">
-                            {games[currentIndex].genres.map(genre => (
-                                <span key={genre.id} className="genre">{genre.name}</span>
-                            ))}
+                    {games[currentIndex].metacritic && (
+                        <div className="metacritic-score">
+                            Metacritic Score: {games[currentIndex].metacritic}
                         </div>
                     )}
-                    <button>Price: XX.XX €</button>
-                    <div>
+                    <div className="navigation-buttons">
                         <button onClick={prevGame}>&lt;</button> {/* Flèche gauche */}
                         <button onClick={nextGame}>&gt;</button> {/* Flèche droite */}
                     </div>
@@ -46,4 +43,5 @@ export default function PopularGames() {
             )}
         </div>
     );
+    
 }
