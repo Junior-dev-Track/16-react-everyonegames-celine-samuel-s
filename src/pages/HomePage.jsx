@@ -8,6 +8,14 @@ import AllGames from '../components/AllGames';
 
 function HomePage() {
     const [games, setGames] = useState([]);
+    const [games2, setGames2] = useState([]);
+
+    useEffect(() => {
+        fetch(`https://api.rawg.io/api/games?key=${import.meta.env.VITE_REACT_APP_RAWG_API_KEY}`)
+        .then(response => response.json())
+        .then(data => setGames(data.results))
+        .catch(error => console.error('Error fetching data:', error));
+    }, []);
 
     useEffect(() => {
         fetch(`https://api.rawg.io/api/games?key=${import.meta.env.VITE_REACT_APP_RAWG_API_KEY}`)
@@ -25,6 +33,7 @@ function HomePage() {
                 <PopularGames />
                 <NewGames />
                 <AllGames games={games} />
+                <AllGames games2={games2} />
                 {/* {games.map(game => (
                     <div key={game.id}>
                     <h2>{game.name}</h2>
