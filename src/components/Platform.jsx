@@ -19,7 +19,10 @@ export default function Platform({ platform }) {
         return (
             <>
                 <li key={platform.platform.id}>
-                    <img src={`../src/images/platforms/${imgPlatform(platform.platform.id)}.png`} alt={`${imgPlatform(platform.platform.id)}`} className="platform-icon"/>
+                    <img 
+                        src={`../src/images/platforms/${imgPlatform(platform.platform.id)}.png`} 
+                        alt={`${imgPlatform(platform.platform.id)}`} 
+                        className="platform-icon"/>
                 </li>
             </>
         )

@@ -56,12 +56,23 @@ table {
 
 .body {
   width: 100%;
+  font-size: 16px;
 }
 
 .container {
   width: 90%;
   margin: auto;
   border: 1px solid #000000;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
 header .container {
@@ -105,6 +116,8 @@ header .container .logo {
   width: 20%;
   height: auto;
   margin: 1%;
+  border: 1px solid #000000;
+  border-radius: 15px;
 }
 .container-all-games-page .game-card .game-img {
   width: 100%;
@@ -120,6 +133,7 @@ header .container .logo {
   left: 0;
   -o-object-fit: cover;
      object-fit: cover;
+  border-radius: 15px 15px 0 0;
 }
 .container-all-games-page .game-card .game-info {
   display: -webkit-box;
@@ -129,6 +143,23 @@ header .container .logo {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  gap: 5px;
+  width: 95%;
+  margin: auto;
+  padding: 10px;
+}
+.container-all-games-page .game-card .game-info .game-genres {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 10px;
 }
 .container-all-games-page .game-card .game-info .game-platform {
   display: -webkit-box;
