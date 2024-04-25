@@ -5,17 +5,21 @@ export default function Header() {
     return (
         <header>
             <div className="container">
-            <Link to='/'>
-                <img src="./src/images/logo.png" alt="home" className="logo"/>
-            </Link>
+                <Link to='/'>
+                    <img src="./src/images/logo.png" alt="home" className="logo"/>
+                </Link>
+                <div className="search-bar">
+                    <input type="text" placeholder="Search for a game" />
+                </div>
+                <nav>
+                    <ul>
+                        <li>
+                            <Link to='/allgames'>Browse games</Link>
+                            <Link to='/about'>About</Link>
+                        </li>
+                    </ul>
+                </nav>
             </div>
-            <h1>Game Library</h1>
-            <nav>
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/about">About</a></li>
-                </ul>
-            </nav>
         </header>
     )
 }
