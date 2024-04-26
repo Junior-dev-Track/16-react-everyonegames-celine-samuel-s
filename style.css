@@ -125,7 +125,7 @@ header .container .logo {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  margin: 0 10px;
+  margin: 0 10px 10px 10px; /* Espacement horizontal entre les boutons et ajout de l'espace en bas */
 }
 .game_popular .navigation-buttons button:hover {
   background-color: #0062cc;

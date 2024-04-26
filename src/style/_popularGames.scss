@@ -53,12 +53,13 @@
         border: none;
         border-radius: 5px;
         cursor: pointer;
-        margin: 0 10px; // Espacement horizontal entre les boutons
-  
+        margin: 0 10px 10px 10px; /* Espacement horizontal entre les boutons et ajout de l'espace en bas */
+    
         &:hover {
-          background-color: darken(#007BFF, 10%);
+            background-color: darken(#007BFF, 10%);
         }
-      }
+    }
+        
     }
   }
   
