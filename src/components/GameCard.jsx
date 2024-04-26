@@ -56,6 +56,7 @@ export default function GameCard({ game }) {
                             width={videoWidth}
                             height={videoHeight}
                             onLoadedMetadata={handleVideoLoadedMetadata}
+                            className="game-video" // Ajoutez cette classe pour le style
                         >
                             <source src={videoUrl} type="video/mp4" />
                             Your browser does not support the video tag.
@@ -68,6 +69,11 @@ export default function GameCard({ game }) {
                     <h2>{game.name}</h2>
                     <p>Rating: {game.rating}</p>
                     <p>Released: {game.released.substring(0, 4)}</p>
+                    <ul className="game-platform">
+                        {game.parent_platforms.map(platform => (
+                            <Platform platform={platform} key={platform.id} />
+                        ))}
+                    </ul>
                 </div>
             </article>
         </>
