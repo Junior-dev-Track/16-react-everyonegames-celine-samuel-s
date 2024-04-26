@@ -7,7 +7,7 @@ export default function GameCard({ game }) {
 
     return (
         <>
-        <Link to={`/game/${game.id}`}>
+        {/* <Link to={`/game/${game.id}`}> */}
             <article key={game.id} className="game-card">
                 <div className="game-img">
                     <img src={game.background_image} alt={game.name} />
@@ -30,7 +30,7 @@ export default function GameCard({ game }) {
                     </ul>
                 </div>
             </article>
-        </Link>
+        {/* </Link> */}
         </>
     )
 }
