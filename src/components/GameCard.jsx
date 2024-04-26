@@ -1,70 +1,74 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import Platform from "./Platform";
+import Screenshots from '../components/info_game/Screenshots';
+import Trailer from '../components/info_game/Trailer';
 
 export default function GameCard({ game }) {
-    const [videoUrl, setVideoUrl] = useState('');
     const [isHovering, setIsHovering] = useState(false);
-    const [videoWidth, setVideoWidth] = useState(0);
-    const [videoHeight, setVideoHeight] = useState(0);
+    const [hasTrailer, setHasTrailer] = useState(false);
+    const [screenshots, setScreenshots] = useState([]);
+    const [screenshotIndex, setScreenshotIndex] = useState(0);
+    const videoRef = useRef(null);
 
-    const handleMouseEnter = () => {
+    const handleMouseEnter = async () => {
         setIsHovering(true);
+        try {
+            const moviesResponse = await fetch(`https://api.rawg.io/api/games/${game.id}/movies?key=${import.meta.env.VITE_REACT_APP_RAWG_API_KEY}`);
+            const moviesData = await moviesResponse.json();
+            setHasTrailer(moviesData.results && moviesData.results.length > 0);
+
+            const screenshotsResponse = await fetch(`https://api.rawg.io/api/games/${game.id}/screenshots?key=${import.meta.env.VITE_REACT_APP_RAWG_API_KEY}`);
+            const screenshotsData = await screenshotsResponse.json();
+            setScreenshots(screenshotsData.results || []);
+        } catch (error) {
+            console.error('Error fetching media:', error);
+            setHasTrailer(false);
+        }
     };
 
     const handleMouseLeave = () => {
         setIsHovering(false);
+        setScreenshotIndex(0); // Reset the index when mouse leaves
     };
 
     useEffect(() => {
-        const fetchVideo = async () => {
-            try {
-                const response = await fetch(`https://api.rawg.io/api/games/${game.id}/movies?key=b6bee7856c404feaad9b535d9e489152`);
-                const data = await response.json();
-                if (data.results && data.results.length > 0) {
-                    setVideoUrl(data.results[0].data.max);
-                }
-            } catch (error) {
-                console.error('Error fetching game video:', error);
-            }
-        };
-
-        if (isHovering && !videoUrl) {
-            fetchVideo();
+        let interval;
+        if (isHovering && !hasTrailer && screenshots.length > 0) {
+            interval = setInterval(() => {
+                setScreenshotIndex(prevIndex => (prevIndex + 1) % screenshots.length);
+            }, 2000); // Change every 2 seconds
+        } else {
+            clearInterval(interval);
         }
-    }, [game.id, isHovering, videoUrl]);
+        return () => clearInterval(interval);
+    }, [isHovering, hasTrailer, screenshots.length]);
 
-    const handleVideoLoadedMetadata = (event) => {
-        setVideoWidth(event.target.videoWidth);
-        setVideoHeight(event.target.videoHeight);
+    const handleVideoPlay = () => {
+        if (videoRef.current) {
+            videoRef.current.play().catch(error => console.error('Error playing the video:', error));
+        }
     };
 
     return (
-        <>
-
-      <Link to={`/game/${game.id}`}>
-            <article
-                className="game-card"
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave}
-            >
+        <Link to={`/game/${game.id}`}>
+            <article className="game-card" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
                 <div className="game-img">
-                    {isHovering && videoUrl ? (
-                        <video
-                            src={videoUrl}
-                            autoPlay
-                            loop
-                            muted
-                            width={videoWidth}
-                            height={videoHeight}
-                            onLoadedMetadata={handleVideoLoadedMetadata}
-                            className="game-video" // Ajoutez cette classe pour le style
-                        >
-                            <source src={videoUrl} type="video/mp4" />
-                            Your browser does not support the video tag.
-                        </video>
+                    {isHovering ? (
+                        hasTrailer ? (
+                            <Trailer id={game.id} autoplay={true} />
+                        ) : (
+                            screenshots.length > 0 && (
+                                <img src={screenshots[screenshotIndex].image} alt={`Screenshot ${screenshotIndex}`} />
+                            )
+                        )
                     ) : (
                         <img src={game.background_image} alt={game.name} />
+                    )}
+                    {isHovering && hasTrailer && (
+                        <button onClick={handleVideoPlay} style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', opacity: 0, zIndex: 1 }}>
+                            {/* Invisible button to trigger video play */}
+                        </button>
                     )}
                 </div>
                 <div className="game-info">
@@ -79,6 +83,5 @@ export default function GameCard({ game }) {
                 </div>
             </article>
         </Link>
-        </>
     );
 }

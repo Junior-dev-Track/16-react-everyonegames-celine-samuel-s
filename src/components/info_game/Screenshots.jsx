@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-export default function Screenshots ({ id }) {
+export default function Screenshots({ id }) {
     const [gameScreenshot, setGameScreenshot] = useState([]);
 
     useEffect(() => {
@@ -8,7 +8,7 @@ export default function Screenshots ({ id }) {
         .then(response => response.json())
         .then(data => setGameScreenshot(data.results))
         .catch(error => console.error('Error fetching data:', error));
-    }, []);
+    }, [id]); // Ajout de l'ID comme dépendance
 
     return (
         <div className="game-screenshots">
