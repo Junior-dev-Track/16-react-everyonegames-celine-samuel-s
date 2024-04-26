@@ -5,10 +5,13 @@ export default function PopularGames() {
     const [currentIndex, setCurrentIndex] = useState(0);
 
     useEffect(() => {
-        fetch(`https://api.rawg.io/api/games?key=${import.meta.env.VITE_REACT_APP_RAWG_API_KEY}`)
+        // Utilisez `ordering=-added` pour trier les jeux par popularité
+        const url = `https://api.rawg.io/api/games?key=${import.meta.env.VITE_REACT_APP_RAWG_API_KEY}&ordering=-added`;
+
+        fetch(url)
         .then(response => response.json())
         .then(data => {
-            setGames(data.results); // Stocker tous les jeux
+            setGames(data.results); // Stocker tous les jeux populaires
             setCurrentIndex(0); // Commencer par le premier jeu
         })
         .catch(error => console.error('Error fetching data:', error));
@@ -43,5 +46,4 @@ export default function PopularGames() {
             )}
         </div>
     );
-    
 }

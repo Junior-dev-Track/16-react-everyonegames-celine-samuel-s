@@ -1,4 +1,12 @@
+/***********************/
+/*        HEADER       */
+/***********************/
+
 header {
+    background-color: #222; // Couleur de fond sombre pour l'en-tête
+    color: #ccc; // Couleur de base des textes
+    padding: 10px 0; // Padding vertical pour l'en-tête
+
     .container {
         display: flex;
         align-items: center;
@@ -6,6 +14,92 @@ header {
         .logo {
             width: 100px;
             height: auto;
+            filter: brightness(0) invert(1) contrast(100);
         }
     }
 }
+
+.search-bar {
+    background-color: #333; // Couleur de fond sombre pour la barre de recherche
+    padding: 10px; // Espacement autour de l'input à l'intérieur de la barre
+    position: relative;
+    border-radius: 5px; // Bords arrondis pour le conteneur de la barre de recherche
+  
+    input[type="text"] {
+      width: 100%; // Prend toute la largeur disponible
+      padding: 8px 15px; // Padding intérieur pour l'input
+      margin: 0; // Assure qu'il n'y a pas de marge extérieure qui affecte la largeur
+      box-sizing: border-box; // S'assure que padding et bordure sont inclus dans la largeur et la hauteur
+      font-size: 22px; // Taille de texte facile à lire
+      color: #ccc; // Couleur de texte claire pour plus de contraste
+      background-color: #222; // Couleur de fond encore plus sombre pour l'input
+      border: 1px solid #555; // Bordure subtile
+      border-radius: 4px; // Bords arrondis pour l'input
+      
+      &::placeholder { // Style pour le texte placeholder
+        color: #666;
+      }
+  
+      &:focus { // Style lorsque l'input est focus
+        outline: none; // Supprime l'outline par défaut
+        border-color: #007BFF; // Met une couleur de bordure bleue pour le focus
+        box-shadow: 0 0 8px rgba(0, 123, 255, 0.5); // Ajoute un léger shadow pour l'effet de focus
+      }
+    }
+  }
+
+  nav {
+    ul {
+      list-style: none; // Supprime les puces par défaut
+
+      li {
+        display: inline-block; // Pour afficher les liens horizontalement
+
+        a {
+          text-decoration: none; // Supprime le soulignement des liens
+          color: white; // Couleur des liens en blanc
+          padding: 8px 15px; // Espace autour des liens
+          border-radius: 4px; // Bords arrondis pour les liens
+
+          &:hover, &:focus {
+            background-color: rgba(255, 255, 255, 0.2); // Fond légèrement plus clair au survol
+            outline: none; // Supprime l'outline lors du focus
+          }
+
+          &:active {
+            background-color: rgba(255, 255, 255, 0.3); // Fond un peu plus clair lors du clic
+          }
+        }
+      }
+    }
+  }
+  
+  .search-results { // Liste de résultats déroulante
+    list-style-type: none;
+    position: absolute;
+    top: 100%; // Positionnez juste en dessous de l'input
+    left: 0;
+    right: 0;
+    margin-top: 0px;
+    background-color: #333; // Fond sombre pour les suggestions
+    border-radius: 0 0 5px 5px; // Bordure arrondie pour le bas de la liste
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); // Ombre subtile pour la liste
+    z-index: 5; // Assurez-vous que la liste est au-dessus des autres éléments
+    overflow: hidden; // Masque les bordures qui dépassent le border-radius
+
+    li {
+      padding: 10px;
+      border-top: 1px solid #444; // Ligne de séparation
+      color: #ccc; // Texte clair
+
+      &:hover, &:focus {
+        background-color: #2a2a2a; // Change le fond de l'élément lors du survol
+      }
+
+      &:first-child {
+        border-top: none; // Pas de bordure en haut du premier élément
+      }
+    }
+  }
+
+
