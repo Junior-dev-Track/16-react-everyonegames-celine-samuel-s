@@ -41,6 +41,8 @@ export default function GameCard({ game }) {
 
     return (
         <>
+
+      <Link to={`/game/${game.id}`}>
             <article
                 className="game-card"
                 onMouseEnter={handleMouseEnter}
@@ -76,6 +78,7 @@ export default function GameCard({ game }) {
                     </ul>
                 </div>
             </article>
+        </Link>
         </>
     );
 }
