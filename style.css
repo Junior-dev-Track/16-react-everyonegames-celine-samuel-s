@@ -56,12 +56,23 @@ table {
 
 .body {
   width: 100%;
+  font-size: 16px;
 }
 
 .container {
   width: 90%;
   margin: auto;
   border: 1px solid #000000;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
 header .container {
@@ -73,6 +84,93 @@ header .container .logo {
   width: 100px;
   height: auto;
 }
+
+.container-all-games-page {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.container-all-games-page .game-card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 20%;
+  height: auto;
+  margin: 1%;
+  border: 1px solid #000000;
+  border-radius: 15px;
+}
+.container-all-games-page .game-card .game-img {
+  width: 100%;
+  height: 0;
+  padding-bottom: 100%;
+  position: relative;
+}
+.container-all-games-page .game-card .game-img img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 15px 15px 0 0;
+}
+.container-all-games-page .game-card .game-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 5px;
+  width: 95%;
+  margin: auto;
+  padding: 10px;
+}
+.container-all-games-page .game-card .game-info .game-genres {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 10px;
+}
+.container-all-games-page .game-card .game-info .game-platform {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
+  gap: 5px;
+}
+.container-all-games-page .game-card .game-info .game-platform li img {
+  width: 20px;
+  height: 20px;
 
 /**********************/
 /*    POPULAR GAMES   */
