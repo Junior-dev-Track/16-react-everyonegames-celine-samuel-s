@@ -76,9 +76,15 @@ h2 {
 }
 
 header .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 header .container .logo {
   width: 100px;
@@ -98,8 +104,14 @@ header .container .logo {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  gap: 1%;
 }
-.container-all-games-page .game-card {
+.container-all-games-page a {
+  width: 20%;
+  height: 100%;
+}
+.container-all-games-page a .game-card {
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -107,19 +119,17 @@ header .container .logo {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  width: 20%;
-  height: auto;
   margin: 1%;
   border: 1px solid #000000;
   border-radius: 15px;
 }
-.container-all-games-page .game-card .game-img {
+.container-all-games-page a .game-card .game-img {
   width: 100%;
   height: 0;
   padding-bottom: 100%;
   position: relative;
 }
-.container-all-games-page .game-card .game-img img {
+.container-all-games-page a .game-card .game-img img {
   width: 100%;
   height: 100%;
   position: absolute;
@@ -129,7 +139,7 @@ header .container .logo {
      object-fit: cover;
   border-radius: 15px 15px 0 0;
 }
-.container-all-games-page .game-card .game-info {
+.container-all-games-page a .game-card .game-info {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -142,7 +152,7 @@ header .container .logo {
   margin: auto;
   padding: 10px;
 }
-.container-all-games-page .game-card .game-info .game-genres {
+.container-all-games-page a .game-card .game-info .game-genres {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -155,7 +165,7 @@ header .container .logo {
           justify-content: center;
   gap: 10px;
 }
-.container-all-games-page .game-card .game-info .game-platform {
+.container-all-games-page a .game-card .game-info .game-platform {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -168,9 +178,10 @@ header .container .logo {
           justify-content: left;
   gap: 5px;
 }
-.container-all-games-page .game-card .game-info .game-platform li img {
+.container-all-games-page a .game-card .game-info .game-platform li img {
   width: 20px;
   height: 20px;
+}
 
 /**********************/
 /*    POPULAR GAMES   */
@@ -182,9 +193,16 @@ header .container .logo {
 }
 
 .game_popular {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   text-align: center;
 }
 .game_popular h2 {
@@ -207,11 +225,16 @@ header .container .logo {
   font-weight: bold;
   border-radius: 5px;
   margin-bottom: 20px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 .game_popular .navigation-buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   width: 100%;
   margin-top: 10px;
 }
