@@ -97,7 +97,8 @@ header .container {
 header .container .logo {
   width: 100px;
   height: auto;
-  filter: brightness(0) invert(1) contrast(100);
+  -webkit-filter: brightness(0) invert(1) contrast(100);
+          filter: brightness(0) invert(1) contrast(100);
 }
 
 .search-bar {
@@ -110,14 +111,24 @@ header .container .logo {
   width: 100%;
   padding: 8px 15px;
   margin: 0;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   font-size: 22px;
   color: #ccc;
   background-color: #222;
   border: 1px solid #555;
   border-radius: 4px;
 }
+.search-bar input[type=text]::-webkit-input-placeholder {
+  color: #666;
+}
 .search-bar input[type=text]::-moz-placeholder {
+  color: #666;
+}
+.search-bar input[type=text]:-ms-input-placeholder {
+  color: #666;
+}
+.search-bar input[type=text]::-ms-input-placeholder {
   color: #666;
 }
 .search-bar input[type=text]::placeholder {
@@ -126,7 +137,8 @@ header .container .logo {
 .search-bar input[type=text]:focus {
   outline: none;
   border-color: #007BFF;
-  box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+  -webkit-box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+          box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
 }
 
 nav ul {
@@ -158,7 +170,8 @@ nav ul li a:active {
   margin-top: 0px;
   background-color: #333;
   border-radius: 0 0 5px 5px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   z-index: 5;
   overflow: hidden;
 }
@@ -183,10 +196,17 @@ footer {
   padding: 10px 0;
 }
 footer .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: nowrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
 }
 footer .container svg {
   width: 50px;
@@ -199,6 +219,8 @@ footer .container svg:hover {
 }
 
 .container-all-games-page {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
@@ -224,15 +246,6 @@ footer .container svg:hover {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-.container-all-games-page .game-card {
-  display: flex;
-  flex-direction: column;
-  width: 20%;
-  height: auto;
   margin: 1%;
   border: 1px solid #000000;
   border-radius: 15px;
@@ -253,28 +266,43 @@ footer .container svg:hover {
      object-fit: cover;
   border-radius: 15px 15px 0 0;
 }
-
-.container-all-games-page .game-card .game-info {
+.container-all-games-page a .game-card .game-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   gap: 5px;
   width: 95%;
   margin: auto;
   padding: 10px;
 }
-
-.container-all-games-page .game-card .game-info .game-genres {
-
+.container-all-games-page a .game-card .game-info .game-genres {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   gap: 10px;
 }
-
-.container-all-games-page .game-card .game-info .game-platform {
+.container-all-games-page a .game-card .game-info .game-platform {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  justify-content: left;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
   gap: 5px;
 }
 .container-all-games-page a .game-card .game-info .game-platform li img {
