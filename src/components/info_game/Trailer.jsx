@@ -10,5 +10,15 @@ export default function Trailer ({ id }) {
         .catch(error => console.error('Error fetching data:', error));
     }, []);
 
-    console.log(gameMovies);
+    console.log(gameMovies.length);
+
+    if (gameMovies.length >= 0) {
+        return (
+            <div className="game-movies">
+            {gameMovies.map(movies => (
+                <video key={movies.id} src={movies.data.max} alt={movies.id} />
+            ))}
+        </div>
+    );
+    } else return null;
 }

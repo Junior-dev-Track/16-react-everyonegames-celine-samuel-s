@@ -10,5 +10,11 @@ export default function Screenshots ({ id }) {
         .catch(error => console.error('Error fetching data:', error));
     }, []);
 
-    console.log(gameScreenshot);
+    return (
+        <div className="game-screenshots">
+            {gameScreenshot.map(screenshot => (
+                <img key={screenshot.id} src={screenshot.image} alt={screenshot.id} />
+            ))}
+        </div>
+    );
 }
