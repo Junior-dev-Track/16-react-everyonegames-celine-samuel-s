@@ -76,15 +76,9 @@ h2 {
 }
 
 header .container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  align-items: center;
+  justify-content: space-between;
 }
 header .container .logo {
   width: 100px;
@@ -177,4 +171,60 @@ header .container .logo {
 .container-all-games-page .game-card .game-info .game-platform li img {
   width: 20px;
   height: 20px;
+
+/**********************/
+/*    POPULAR GAMES   */
+/**********************/
+.popular {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 75px;
+  text-align: center;
+}
+
+.game_popular {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.game_popular h2 {
+  font-size: 24px;
+  color: #1e1e1e;
+  margin-bottom: 10px;
+}
+.game_popular img {
+  width: 740px;
+  height: 416px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+.game_popular .metacritic-score {
+  padding: 8px 20px;
+  background-color: #ffcc00;
+  color: #000;
+  font-weight: bold;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.game_popular .navigation-buttons {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 10px;
+}
+.game_popular .navigation-buttons button {
+  padding: 10px 15px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #007BFF;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 0 10px;
+}
+.game_popular .navigation-buttons button:hover {
+  background-color: #0062cc;
 }/*# sourceMappingURL=style.css.map */
