@@ -15,6 +15,7 @@ function HomePage() {
         .then(data => setGames(data.results))
         .catch(error => console.error('Error fetching data:', error));
     }, []);
+    console.log(games)
 
     return (
         <>

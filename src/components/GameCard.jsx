@@ -41,6 +41,8 @@ export default function GameCard({ game }) {
 
     return (
         <>
+
+      <Link to={`/game/${game.id}`}>
             <article
                 className="game-card"
                 onMouseEnter={handleMouseEnter}
@@ -70,6 +72,7 @@ export default function GameCard({ game }) {
                     <p>Released: {game.released.substring(0, 4)}</p>
                 </div>
             </article>
+        </Link>
         </>
     );
 }

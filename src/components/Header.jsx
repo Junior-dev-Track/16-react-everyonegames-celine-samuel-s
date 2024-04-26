@@ -39,7 +39,7 @@ export default function Header() {
         <header>
             <div className="container">
                 <Link to='/'>
-                    <img src="./src/images/logo.png" alt="home" className="logo"/>
+                    <img src="../src/images/logo.png" alt="home" className="logo"/>
                 </Link>
                 <div className="search-bar">
                     <input 
