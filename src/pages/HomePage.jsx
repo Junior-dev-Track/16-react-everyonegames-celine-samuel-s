@@ -24,7 +24,7 @@ function HomePage() {
                 <h1>Everyone Games</h1>
                 <PopularGames />
                 <NewGames />
-                <AllGames />
+                <AllGames games={games} />
                 {/* {games.map(game => (
                     <div key={game.id}>
                     <h2>{game.name}</h2>

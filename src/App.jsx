@@ -13,7 +13,7 @@ function App() {
                 <Route path="/" element={<HomePage />} />
                 <Route path="/about" element={<AboutPage />} />
                 <Route path="/allgames" element={<AllGamesPage />} />
-                <Route path="/game" element={<GamesPage />} />
+                <Route path="/game/:id" element={<GamesPage />} /> {/* Corrected route */}
             </Routes>
         </BrowserRouter>
     );
