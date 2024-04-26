@@ -377,4 +377,44 @@ footer .container svg:hover {
 }
 .game_popular .navigation-buttons button:hover {
   background-color: #0062cc;
+}
+
+.container-game-page {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.container-game-page .game-images {
+  width: 100%;
+  height: 400px;
+}
+.container-game-page .game-images img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.container-game-page .game-info-important .game-platform {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  gap: 5px;
+}
+.container-game-page .game-info-important .game-platform img {
+  width: 20px;
+  height: auto;
+}
+
+.container-game-page-description {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.container-game-page-description .game-description {
+  width: 70%;
+  margin-right: 20px;
 }/*# sourceMappingURL=style.css.map */
