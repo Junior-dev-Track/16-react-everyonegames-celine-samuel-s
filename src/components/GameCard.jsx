@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import Platform from "./Platform";
+import Platform from "./info_game/Platform";
 
 export default function GameCard({ game }) {
     const [videoUrl, setVideoUrl] = useState('');
@@ -70,6 +70,11 @@ export default function GameCard({ game }) {
                     <h2>{game.name}</h2>
                     <p>Rating: {game.rating}</p>
                     <p>Released: {game.released.substring(0, 4)}</p>
+                    <ul className="game-platform">
+                        {game.parent_platforms.map(platform => (
+                            <Platform platform={platform} key={platform.id} />
+                        ))}
+                    </ul>
                 </div>
             </article>
         </Link>

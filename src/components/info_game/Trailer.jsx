@@ -10,8 +10,6 @@ export default function Trailer ({ id }) {
         .catch(error => console.error('Error fetching data:', error));
     }, []);
 
-    console.log(gameMovies.length);
-
     if (gameMovies.length >= 0) {
         return (
             <div className="game-movies">
