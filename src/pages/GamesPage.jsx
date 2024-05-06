@@ -84,7 +84,20 @@ function GamePage() {
                     <img src={gameInfo.background_image} alt={gameInfo.name} />
                     <div className="other-images">
                     <div className="flex-container">
-                            
+                        <Trailer 
+                            id={id}
+                            handleZoom={handleZoom}
+                            resetZoom={resetZoom}
+                            zoomedImage={zoomedImage}
+                            setZoomedImage={setZoomedImage}
+                        />
+                        <Screenshots
+                            id={id}
+                            handleZoom={handleZoom}
+                            resetZoom={resetZoom}
+                            zoomedImage={zoomedImage}
+                            setZoomedImage={setZoomedImage}
+                        />
                     </div>
                     </div>
                 </div>

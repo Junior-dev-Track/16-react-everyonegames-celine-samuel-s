@@ -16,26 +16,18 @@ export default function Trailer({ id, autoplay, handleZoom, resetZoom, zoomedIma
         return (
             <div className="container-movies">
                 <div className="game-movies">
-                    {gameMovies.map(movies => (
-                        <video 
-                            onClick={() => handleZoom(screenshot)} 
-                            key={movies.id} 
-                            src={movies.data.max} 
-                            controls 
-                            autoPlay={autoplay} 
-                            muted 
-                            loop={autoplay} 
-                            alt={movies.id} />
-                    ))}
+                {gameMovies.map(movies => (
+                    <video 
+                        onClick={() => handleZoom(movies.data.max)} // Pass the entire movies object
+                        key={movies.id} 
+                        src={movies.data.max} 
+                        controls 
+                        autoPlay={autoplay} 
+                        muted 
+                        loop={autoplay} 
+                        alt={movies.id} />
+                ))}
                 </div>
-                {zoomedImage && (
-                <img 
-                    onClick={resetZoom} 
-                    src={zoomedImage.image} 
-                    alt={zoomedImage.id} 
-                    style={{transform: 'scale(2)', transition: 'transform 0.3s ease-in-out'}} // Apply zoom effect
-                />
-            )}
             </div>
         );
     } else return null;

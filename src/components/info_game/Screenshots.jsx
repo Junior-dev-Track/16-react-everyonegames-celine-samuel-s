@@ -34,7 +34,11 @@ export default function Screenshots({ id, handleZoom, resetZoom, zoomedImage, se
                     src={zoomedImage.image} 
                     alt={zoomedImage.id} 
                     style={{
-                        transform: 'scale(2)',
+                        display: 'block',
+                        position: 'fixed',
+                        top: '45%',
+                        left: '50%',
+                        transform: 'scale(8)',
                         transition: 'transform 0.3s ease-in-out',
                         textAlign: 'center'
                     }} // Apply zoom effect
