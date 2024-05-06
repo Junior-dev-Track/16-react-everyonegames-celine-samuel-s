@@ -24,12 +24,12 @@ function GamePage() {
         .then(response => response.json())
         .then(data => {
             setGameInfo(data);
-            // console.log(data);
+            console.log(data);
         })
         .catch(error => console.error('Error fetching data:', error));
-    }, []);
+    }, [gameInfo]);
 
-    console.log(gameInfo)
+    console.log(gameInfo);
 
     return (
         <>
