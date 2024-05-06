@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-export default function Trailer ({ id }) {
+export default function Trailer({ id, autoplay }) {
     const [gameMovies, setGameMovies] = useState([]);
 
     useEffect(() => {
@@ -8,15 +8,15 @@ export default function Trailer ({ id }) {
         .then(response => response.json())
         .then(data => setGameMovies(data.results))
         .catch(error => console.error('Error fetching data:', error));
-    }, []);
+    }, [id]); // Ajout de l'ID comme dépendance
 
-    if (gameMovies.length >= 0) {
+    if (gameMovies.length > 0) {
         return (
             <div className="game-movies">
-            {gameMovies.map(movies => (
-                <video key={movies.id} src={movies.data.max} alt={movies.id} />
-            ))}
-        </div>
-    );
+                {gameMovies.map(movies => (
+                    <video key={movies.id} src={movies.data.max} controls autoPlay={autoplay} muted loop={autoplay} alt={movies.id} />
+                ))}
+            </div>
+        );
     } else return null;
 }
