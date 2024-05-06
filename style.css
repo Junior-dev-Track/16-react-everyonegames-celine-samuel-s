@@ -1,3 +1,4 @@
+@charset "UTF-8";
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -205,11 +206,44 @@ footer .container svg:hover {
 }
 .container-all-games-page a .game-card {
   width: 100%;
+  height: 550px;
   display: flex;
   flex-direction: column;
   margin: 1%;
   border: 1px solid #000000;
   border-radius: 15px;
+}
+.container-all-games-page a .game-card h2 {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 24px;
+  color: #E53935;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  margin-bottom: 8px;
+  height: 60px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.container-all-games-page a .game-card h2:hover {
+  color: #3F51B5;
+  cursor: pointer;
+}
+.container-all-games-page a .game-card p:before {
+  content: "•";
+  margin-right: 8px;
+  color: #E53935;
+}
+.container-all-games-page a .game-card p {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  color: #333;
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 5px;
+}
+.container-all-games-page a .game-card p:last-child {
+  margin-bottom: 0;
 }
 .container-all-games-page a .game-card .game-img {
   width: 100%;
