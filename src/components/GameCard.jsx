@@ -65,7 +65,7 @@ export default function GameCard({ game }) {
     const releaseDate = game.released ? game.released.substring(0, 4) : 'Date inconnue';
 
     return (
-        <Link to={`/game/${game.id}`}>
+        <Link to={`/game/${game.id}`} className="container-article">
             <article className="game-card" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
                 <div className="game-img">
                     {isHovering ? (
@@ -86,10 +86,12 @@ export default function GameCard({ game }) {
                     )}
                 </div>
                 <div className="game-info">
-                    <h4>{game.name}</h4>  {/* Titre complet affiché */}
-                    <div className="game-rating-released">
-                        <p>Rating: {game.rating || 'Non évalué'}</p>
-                        <p>Released: {releaseDate}</p>
+                    <div className="game-name-numbers">
+                        <h4>{game.name}</h4>  {/* Titre complet affiché */}
+                        <div className="game-rating-released">
+                            <p>Rating: {game.rating || 'Non évalué'}</p>
+                            <p>Released: {releaseDate}</p>
+                        </div>
                     </div>
                     <ul className="game-platform">
                         {game.parent_platforms.map(platform => (

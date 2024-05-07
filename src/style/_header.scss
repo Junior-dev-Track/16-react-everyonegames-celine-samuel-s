@@ -9,24 +9,29 @@ header {
     background: linear-gradient(180deg, rgba(51,51,51,1) 0%, rgba(34,34,34,1) 100%, rgba(34,34,34,1) 222%, rgba(2,0,36,1) 222%, rgba(9,9,121,1) 333%); // 0%: #333333 et 100%: #222222
     color: general.$color-white; // Couleur de base des textes
     padding: 10px 0; // Padding vertical pour l'en-tête
+    
+    display: flex; // Ensure header is a flex container
+    align-items: center;
+    justify-content: space-between; 
+
 
     .container {
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        // justify-content: space-between;
         .logo {
             width: 100px;
             height: auto;
-            filter: brightness(0) invert(1) contrast(100);
+            filter: brightness(0) invert(1) contrast(0.5);
         }
     }
-}
 
 .search-bar {
     background-color: general.$color-light-black; // Couleur de fond sombre pour la barre de recherche
     padding: 10px; // Espacement autour de l'input à l'intérieur de la barre
     position: relative;
     border-radius: 5px; // Bords arrondis pour le conteneur de la barre de recherche
+    justify-self: center;
   
     input[type="text"] {
       width: 100%; // Prend toute la largeur disponible
@@ -52,6 +57,7 @@ header {
   }
 
   nav {
+    justify-self: right;
     ul {
       list-style: none; // Supprime les puces par défaut
 
@@ -60,7 +66,7 @@ header {
 
         a {
           text-decoration: none; // Supprime le soulignement des liens
-          color: white; // Couleur des liens en blanc
+          color: general.$color-white; // Couleur des liens en blanc
           padding: 8px 15px; // Espace autour des liens
           border-radius: 4px; // Bords arrondis pour les liens
           font-size: 1.4rem;
@@ -105,5 +111,4 @@ header {
       }
     }
   }
-
-
+}

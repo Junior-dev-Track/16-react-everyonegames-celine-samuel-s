@@ -112,23 +112,25 @@ function AllGamesPage() {
             <Header />
             <main>
                 <section>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                        <h1>All games</h1>
-                        <div>
+                    <h1>All games</h1>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }} className='filter'>
+                        {/* <div> */}
                             <label htmlFor="letter">Filtrer par Lettre : </label>
-                            <select onChange={handleLetterChange} value={currentLetter} aria-label="Filtrer par Lettre">
-                                <option value="">Tous</option>
-                                {[...'ABCDEFGHIJKLMNOPQRSTUVWXYZ'].map(letter => (
-                                    <option key={letter} value={letter}>{letter}</option>
-                                ))}
-                            </select>
-                            <select onChange={handleOrderingChange} value={ordering} aria-label="Filtrer par">
-                                <option value="">Par défaut</option>
-                                <option value="slug">Nom (A-Z)</option>
-                                <option value="-slug">Nom (Z-A)</option>
-                            </select>
+                            <div className="filter-container">
+                                <select onChange={handleLetterChange} value={currentLetter} aria-label="Filtrer par Lettre">
+                                    <option value="">Tous</option>
+                                    {[...'ABCDEFGHIJKLMNOPQRSTUVWXYZ'].map(letter => (
+                                        <option key={letter} value={letter}>{letter}</option>
+                                    ))}
+                                </select>
+                                <select onChange={handleOrderingChange} value={ordering} aria-label="Filtrer par">
+                                    <option value="">Par défaut</option>
+                                    <option value="slug">Nom (A-Z)</option>
+                                    <option value="-slug">Nom (Z-A)</option>
+                                </select>
+                            </div>
                         </div>
-                    </div>
+                    {/* </div> */}
                     <div className="container container-all-games-page">
                         {games.map(game => (
                             <GameCard key={game.id} game={game} />

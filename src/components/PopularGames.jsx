@@ -28,7 +28,7 @@ export default function PopularGames() {
 
     return (
         <>
-        <div className="container">
+        <section className="container container-article">
         <h2 className='popular'>Popular Games</h2>
             <article>
                 {/* <hr /> */}
@@ -50,7 +50,7 @@ export default function PopularGames() {
                     </div>
                 )}
             </article>
-        </div>
+        </section>
         </>
     );
 }

@@ -15,24 +15,20 @@ function HomePage() {
         .then(data => setGames(data.results))
         .catch(error => console.error('Error fetching data:', error));
     }, []);
-    console.log(games)
+    // console.log(games)
 
     return (
         <>
         <Header />
         <main>
-            <section className="container">
+            <div className="container">
                 <h1>Everyone Games</h1>
                 <PopularGames />
-                <NewGames />
-                <AllGames games={games} />
-                {/* {games.map(game => (
-                    <div key={game.id}>
-                    <h2>{game.name}</h2>
-                    <img src={game.background_image} alt={game.name} />
-                    </div>
-                ))} */}
-            </section>
+                <section className="new-all-games container">
+                    <NewGames />
+                    <AllGames games={games} />
+                </section>
+            </div>
         </main>
         <Footer />
         </>
