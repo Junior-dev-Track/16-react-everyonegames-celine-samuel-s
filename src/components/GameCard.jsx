@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import Platform from "./Platform";
+import Platform from "../components/info_game/Platform";
 import Screenshots from '../components/info_game/Screenshots';
 import Trailer from '../components/info_game/Trailer';
 
