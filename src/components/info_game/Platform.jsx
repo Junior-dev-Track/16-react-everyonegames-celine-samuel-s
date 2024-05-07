@@ -1,14 +1,19 @@
+// npm install react-icons --save
+import { FaPlaystation, FaXbox } from "react-icons/fa";
+import { DiWindows, DiApple, DiLinux, DiAndroid } from "react-icons/di";
+import { SiNintendo } from "react-icons/si";
+
 export default function Platform({ platform }) {
     const imgPlatform = (id) => {
         switch (id) {
-            case 1: return 'windows'; break;
-            case 2: return 'playstation'; break;
-            case 3: return 'xbox'; break;
-            case 4: return 'apple'; break;      // TODO: Change this to 'ios' ?
-            case 5: return 'apple'; break;
-            case 6: return 'linux'; break;
-            case 7: return 'nintendo'; break;
-            case 8: return 'android'; break;
+            case 1: return <DiWindows />; break;
+            case 2: return <FaPlaystation />; break;
+            case 3: return <FaXbox />; break;
+            case 4: return <DiApple />; break;      // TODO: Change this to 'ios' ?
+            case 5: return <DiApple />; break;
+            case 6: return <DiLinux />; break;
+            case 7: return <SiNintendo />; break;
+            case 8: return <DiAndroid />; break;
         }
     }
 
@@ -16,10 +21,13 @@ export default function Platform({ platform }) {
         return (
             <>
                 <li key={platform.platform.id}>
-                    <img 
+                    {/* <img 
                         src={`../src/images/platforms/${imgPlatform(platform.platform.id)}.png`} 
                         alt={`${imgPlatform(platform.platform.id)}`} 
-                        className="platform-icon"/>
+                        className="platform-icon"/> */}
+                    <div className="platform-icon">
+                        {imgPlatform(platform.platform.id)}
+                    </div>
                 </li>
             </>
         )
