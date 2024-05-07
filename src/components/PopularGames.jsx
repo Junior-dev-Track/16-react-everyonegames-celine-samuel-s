@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function PopularGames() {
     const [games, setGames] = useState([]);
@@ -26,24 +27,30 @@ export default function PopularGames() {
     };
 
     return (
+        <>
         <div className="container">
-            <h2 className='popular'>Popular Games</h2>
-            <hr />
-            {games.length > 0 && games[currentIndex] && (
-                <div className='game_popular'>
-                    <h2>{games[currentIndex].name}</h2>
-                    <img src={games[currentIndex].background_image} alt={games[currentIndex].name}/>
-                    {games[currentIndex].metacritic && (
-                        <div className="metacritic-score">
-                            Metacritic Score: {games[currentIndex].metacritic}
+        <h2 className='popular'>Popular Games</h2>
+            <article>
+                {/* <hr /> */}
+                {games.length > 0 && games[currentIndex] && (
+                    <div className='game_popular'>
+                        <h3>{games[currentIndex].name}</h3>
+                        <Link to={`/game/${games[currentIndex].id}`}>
+                            <img src={games[currentIndex].background_image} alt={games[currentIndex].name}/>
+                        </Link>
+                        {games[currentIndex].metacritic && (
+                            <div className="metacritic-score">
+                                Metacritic Score: {games[currentIndex].metacritic}
+                            </div>
+                        )}
+                        <div className="navigation-buttons">
+                            <button onClick={prevGame}>&lt;</button> {/* Flèche gauche */}
+                            <button onClick={nextGame}>&gt;</button> {/* Flèche droite */}
                         </div>
-                    )}
-                    <div className="navigation-buttons">
-                        <button onClick={prevGame}>&lt;</button> {/* Flèche gauche */}
-                        <button onClick={nextGame}>&gt;</button> {/* Flèche droite */}
                     </div>
-                </div>
-            )}
+                )}
+            </article>
         </div>
+        </>
     );
 }

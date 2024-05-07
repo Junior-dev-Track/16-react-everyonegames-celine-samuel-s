@@ -1,10 +1,13 @@
+@use './general.scss';
+
 /***********************/
 /*        HEADER       */
 /***********************/
 
 header {
-    background-color: #222; // Couleur de fond sombre pour l'en-tête
-    color: #ccc; // Couleur de base des textes
+    // background-color: general.$color-dark-black; // Couleur de fond sombre pour l'en-tête
+    background: linear-gradient(180deg, rgba(51,51,51,1) 0%, rgba(34,34,34,1) 100%, rgba(34,34,34,1) 222%, rgba(2,0,36,1) 222%, rgba(9,9,121,1) 333%); // 0%: #333333 et 100%: #222222
+    color: general.$color-white; // Couleur de base des textes
     padding: 10px 0; // Padding vertical pour l'en-tête
 
     .container {
@@ -20,7 +23,7 @@ header {
 }
 
 .search-bar {
-    background-color: #333; // Couleur de fond sombre pour la barre de recherche
+    background-color: general.$color-light-black; // Couleur de fond sombre pour la barre de recherche
     padding: 10px; // Espacement autour de l'input à l'intérieur de la barre
     position: relative;
     border-radius: 5px; // Bords arrondis pour le conteneur de la barre de recherche
@@ -31,19 +34,19 @@ header {
       margin: 0; // Assure qu'il n'y a pas de marge extérieure qui affecte la largeur
       box-sizing: border-box; // S'assure que padding et bordure sont inclus dans la largeur et la hauteur
       font-size: 22px; // Taille de texte facile à lire
-      color: #ccc; // Couleur de texte claire pour plus de contraste
-      background-color: #222; // Couleur de fond encore plus sombre pour l'input
-      border: 1px solid #555; // Bordure subtile
+      color: general.$color-white; // Couleur de texte claire pour plus de contraste
+      background-color: general.$color-dark-black; // Couleur de fond encore plus sombre pour l'input
+      border: 1px solid general.$color-dark-grey; // Bordure subtile
       border-radius: 4px; // Bords arrondis pour l'input
       
       &::placeholder { // Style pour le texte placeholder
-        color: #666;
+        color: general.$color-light-grey;
       }
   
       &:focus { // Style lorsque l'input est focus
         outline: none; // Supprime l'outline par défaut
-        border-color: #007BFF; // Met une couleur de bordure bleue pour le focus
-        box-shadow: 0 0 8px rgba(0, 123, 255, 0.5); // Ajoute un léger shadow pour l'effet de focus
+        border-color: general.$color-light-blue; // Met une couleur de bordure bleue pour le focus
+        box-shadow: 0 0 8px general.$color-dark-blue; // Ajoute un léger shadow pour l'effet de focus
       }
     }
   }
@@ -60,14 +63,15 @@ header {
           color: white; // Couleur des liens en blanc
           padding: 8px 15px; // Espace autour des liens
           border-radius: 4px; // Bords arrondis pour les liens
+          font-size: 1.4rem;
 
           &:hover, &:focus {
-            background-color: rgba(255, 255, 255, 0.2); // Fond légèrement plus clair au survol
+            background-color: general.$color-dark-grey; // Fond légèrement plus clair au survol
             outline: none; // Supprime l'outline lors du focus
           }
 
           &:active {
-            background-color: rgba(255, 255, 255, 0.3); // Fond un peu plus clair lors du clic
+            background-color: general.$color-light-grey; // Fond un peu plus clair lors du clic
           }
         }
       }
@@ -81,7 +85,7 @@ header {
     left: 0;
     right: 0;
     margin-top: 0px;
-    background-color: #333; // Fond sombre pour les suggestions
+    background-color: general.$color-light-black; // Fond sombre pour les suggestions
     border-radius: 0 0 5px 5px; // Bordure arrondie pour le bas de la liste
     box-shadow: 0 4px 6px rgba(0,0,0,0.1); // Ombre subtile pour la liste
     z-index: 5; // Assurez-vous que la liste est au-dessus des autres éléments
@@ -90,10 +94,10 @@ header {
     li {
       padding: 10px;
       border-top: 1px solid #444; // Ligne de séparation
-      color: #ccc; // Texte clair
+      color: general.$color-white; // Texte clair
 
       &:hover, &:focus {
-        background-color: #2a2a2a; // Change le fond de l'élément lors du survol
+        background-color: general.$color-medium-black; // Change le fond de l'élément lors du survol
       }
 
       &:first-child {

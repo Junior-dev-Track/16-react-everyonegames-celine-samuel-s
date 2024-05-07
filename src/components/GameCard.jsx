@@ -72,9 +72,11 @@ export default function GameCard({ game }) {
                     )}
                 </div>
                 <div className="game-info">
-                    <h2>{game.name}</h2>
-                    <p>Rating: {game.rating}</p>
-                    <p>Released: {game.released.substring(0, 4)}</p>
+                    <h4>{game.name}</h4>
+                    <div className="game-rating-released">
+                        <p>Rating: {game.rating}</p>
+                        <p>Released: {game.released.substring(0, 4)}</p>
+                    </div>
                     <ul className="game-platform">
                         {game.parent_platforms.map(platform => (
                             <Platform platform={platform} key={platform.id} />

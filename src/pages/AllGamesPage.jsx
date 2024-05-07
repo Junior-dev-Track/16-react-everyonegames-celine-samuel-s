@@ -88,7 +88,7 @@ function AllGamesPage() {
             <main>
                 <section>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                        <h1>Tous les Jeux</h1>
+                        <h1>All games</h1>
                         <select onChange={handleOrderingChange} value={ordering} aria-label="Filtrer par">
                             <option value="">Par défaut</option>
                             <option value="name">Nom (A-Z)</option>

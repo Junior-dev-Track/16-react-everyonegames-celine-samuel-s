@@ -13,14 +13,14 @@ function GamePage() {
     const [zoomedImage, setZoomedImage] = useState(null);
     const [loading, setLoading] = useState(false);
 
-    // useEffect(() => {
-    //     fetch(`https://api.rawg.io/api/games/${id}?key=${import.meta.env.VITE_REACT_APP_RAWG_API_KEY}`)
-    //     .then(response => response.json())
-    //     .then(data => {
-    //         setGameInfo(data);
-    //     })
-    //     .catch(error => console.error('Error fetching data:', error));
-    // }, []);
+    useEffect(() => {
+        fetch(`https://api.rawg.io/api/games/${id}?key=${import.meta.env.VITE_REACT_APP_RAWG_API_KEY}`)
+        .then(response => response.json())
+        .then(data => {
+            setGameInfo(data);
+        })
+        .catch(error => console.error('Error fetching data:', error));
+    }, []);
 
     // TODO : temp solution to avoid API calls
     // useEffect(() => {
@@ -33,26 +33,26 @@ function GamePage() {
     //     .catch(error => console.error('Error fetching data:', error));
     // }, []);
 
-    useEffect(() => {
-        const fetchData = async () => {
-            setLoading(true);
-            try {
-                const response = await fetch('/gameInfo.json');
-                if (!response.ok) {
-                    throw new Error(`HTTP error status: ${response.status}`);
-                }
-                const data = await response.json();
-                setGameInfo(data);
-                console.log('coucou' + data);
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //         setLoading(true);
+    //         try {
+    //             const response = await fetch('/gameInfo.json');
+    //             if (!response.ok) {
+    //                 throw new Error(`HTTP error status: ${response.status}`);
+    //             }
+    //             const data = await response.json();
+    //             setGameInfo(data);
+    //             console.log('coucou' + data);
 
-            } catch (error) {
-                console.error('Error fetching data:', error);
-            }
+    //         } catch (error) {
+    //             console.error('Error fetching data:', error);
+    //         }
             
-            setLoading(false);
-        };
-        fetchData();
-    }, []);
+    //         setLoading(false);
+    //     };
+    //     fetchData();
+    // }, []);
 
     console.log(gameInfo);
 
@@ -104,7 +104,7 @@ function GamePage() {
 
                 <div className="game-info-important">
                     
-                    <h4>Available on:</h4>
+                    <h5>Available on:</h5>
                     <div className="list-container information-content">
                         <ul className="game-stores">
                             {gameInfo.stores && gameInfo.stores.map(store => (
@@ -120,7 +120,7 @@ function GamePage() {
                         </ul>
                     </div>
 
-                    <h4>Genres</h4>
+                    <h5>Genres</h5>
                     <div className="list-container information-content">
                         <ul className="game-genres">
                             {gameInfo.genres && gameInfo.genres.map(genre => (
@@ -131,17 +131,17 @@ function GamePage() {
                         </ul>
                     </div>
 
-                    <h4>ESRB Rating</h4>
+                    <h5>ESRB Rating</h5>
                     <div className="information-content">
                         <p>{gameInfo.esrb_rating && gameInfo.esrb_rating.name}</p>
                     </div>
 
-                    <h4>Rating: </h4>
+                    <h5>Rating: </h5>
                     <div className="information-content">
                         <p>{gameInfo.rating}</p>
                     </div>
 
-                    <h4>Metacritics</h4>
+                    <h5>Metacritics</h5>
                     <ul className="game-metacritics information-content">
                         {gameInfo.metacritic_platforms && gameInfo.metacritic_platforms.map(meta => (
                             <li key={meta.id} className='game-metacritics-info'>
@@ -151,19 +151,19 @@ function GamePage() {
                         ))}
                     </ul>
 
-                    <h4>Released</h4>
+                    <h5>Released</h5>
                     <div className="information-content">
                         <p>{gameInfo.released}</p>
                     </div>
 
-                    <h4>Publisher (also possible to get developpers)</h4>
+                    <h5>Publisher (also possible to get developpers)</h5>
                     <div className="information-content">
                         {gameInfo.publishers && gameInfo.publishers.map(publisher => (
                             <p key={publisher.id}>{publisher.name}</p>
                         ))}
                     </div>
 
-                    <h4>Official website</h4>
+                    <h5>Official website</h5>
                     <div className="information-content">
                         <a href={gameInfo.website}>{gameInfo.website}</a>
                     </div>
