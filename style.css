@@ -92,8 +92,7 @@ header .container {
 header .container .logo {
   width: 100px;
   height: auto;
-  -webkit-filter: brightness(0) invert(1) contrast(100);
-          filter: brightness(0) invert(1) contrast(100);
+  filter: brightness(0) invert(1) contrast(100);
 }
 
 .search-bar {
@@ -106,24 +105,14 @@ header .container .logo {
   width: 100%;
   padding: 8px 15px;
   margin: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   font-size: 22px;
   color: #ccc;
   background-color: #222;
   border: 1px solid #555;
   border-radius: 4px;
 }
-.search-bar input[type=text]::-webkit-input-placeholder {
-  color: #666;
-}
 .search-bar input[type=text]::-moz-placeholder {
-  color: #666;
-}
-.search-bar input[type=text]:-ms-input-placeholder {
-  color: #666;
-}
-.search-bar input[type=text]::-ms-input-placeholder {
   color: #666;
 }
 .search-bar input[type=text]::placeholder {
@@ -132,8 +121,7 @@ header .container .logo {
 .search-bar input[type=text]:focus {
   outline: none;
   border-color: #007BFF;
-  -webkit-box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
-          box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
 }
 
 nav ul {
@@ -165,8 +153,7 @@ nav ul li a:active {
   margin-top: 0px;
   background-color: #333;
   border-radius: 0 0 5px 5px;
-  -webkit-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   z-index: 5;
   overflow: hidden;
 }
@@ -191,17 +178,10 @@ footer {
   padding: 10px 0;
 }
 footer .container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
 }
 footer .container svg {
   width: 50px;
@@ -214,8 +194,6 @@ footer .container svg:hover {
 }
 
 .container-all-games-page {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -231,14 +209,13 @@ footer .container svg:hover {
   height: 550px;
   display: flex;
   flex-direction: column;
-
   margin: 1%;
   border: 1px solid #000000;
   border-radius: 15px;
 }
 .container-all-games-page a .game-card h2 {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  font-size: 24px;
+  font-size: 20px;
   color: #E53935;
   text-transform: uppercase;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
@@ -286,10 +263,7 @@ footer .container svg:hover {
 }
 .container-all-games-page a .game-card .game-info {
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   gap: 5px;
   width: 95%;
   margin: auto;
@@ -297,24 +271,14 @@ footer .container svg:hover {
 }
 .container-all-games-page a .game-card .game-info .game-genres {
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  flex-direction: row;
+  justify-content: center;
   gap: 10px;
 }
 .container-all-games-page a .game-card .game-info .game-platform {
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: left;
-      -ms-flex-pack: left;
-          justify-content: left;
+  flex-direction: row;
+  justify-content: left;
   gap: 5px;
 }
 .container-all-games-page a .game-card .game-info .game-platform li img {
@@ -380,8 +344,6 @@ footer .container svg:hover {
 }
 
 .container-game-page {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
 .container-game-page .game-images {
@@ -395,13 +357,8 @@ footer .container svg:hover {
      object-fit: cover;
 }
 .container-game-page .game-info-important .game-platform {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  flex-direction: row;
   gap: 5px;
 }
 .container-game-page .game-info-important .game-platform img {
@@ -410,8 +367,6 @@ footer .container svg:hover {
 }
 
 .container-game-page-description {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
 .container-game-page-description .game-description {
