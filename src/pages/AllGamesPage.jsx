@@ -6,11 +6,13 @@ import GameCard from '../components/GameCard';
 function AllGamesPage() {
     const [games, setGames] = useState([]);
     const [page, setPage] = useState(1);
+    const [loading, setLoading] = useState(false);
     const [hasMore, setHasMore] = useState(true);
+    const [currentLetter, setCurrentLetter] = useState('');
     const [ordering, setOrdering] = useState('');
-    const gameIds = useRef(new Set()); // Suivi des identifiants uniques
+    const gameIds = useRef(new Set()); // Ensemble pour suivre les identifiants uniques
 
-    // Charger les jeux en fonction de la page et du critère de filtrage
+    // Charger les jeux par page
     const loadGames = async () => {
         const apiKey = import.meta.env.VITE_REACT_APP_RAWG_API_KEY;
         if (!apiKey) {
@@ -18,10 +20,17 @@ function AllGamesPage() {
             return;
         }
 
+        if (loading || !hasMore) return; // Empêcher plusieurs appels simultanés
+
+        setLoading(true);
+
         // Construire l'URL de la requête avec les paramètres nécessaires
         let url = `https://api.rawg.io/api/games?key=${apiKey}&page=${page}`;
         if (ordering) {
             url += `&ordering=${ordering}`;
+        }
+        if (currentLetter) {
+            url += `&search=${currentLetter}`;
         }
 
         console.log("Fetching URL:", url);
@@ -35,52 +44,68 @@ function AllGamesPage() {
             const data = await response.json();
             console.log("Fetched data:", data.results);
 
-            // Utiliser une expression régulière pour n'autoriser que les caractères latins
-            const latinAlphabetRegex = /^[a-zA-Z0-9\s.,'’!"#$%&()*+/:;<=>?@\[\]^_`{|}~-]+$/;
-            const filteredGames = data.results.filter(game => {
-                const isLatin = latinAlphabetRegex.test(game.name);
-                console.log(`Checking game: ${game.name}, isLatin: ${isLatin}`);
-                return isLatin && !gameIds.current.has(game.id);
+            // Filtrer les jeux en s'assurant qu'ils sont uniques, valides et commencent par la lettre choisie
+            const uniqueGames = data.results.filter(game => {
+                // Vérifiez que l'ID n'est pas déjà dans `gameIds`
+                const isUnique = !gameIds.current.has(game.id);
+
+                // Vérifiez que les propriétés essentielles existent
+                const hasValidProperties = game.name && game.background_image && game.parent_platforms;
+
+                // Filtrer par lettre initiale
+                const startsWithCurrentLetter = currentLetter ? game.name.toUpperCase().startsWith(currentLetter) : true;
+
+                // Ajoutez le jeu uniquement s'il est unique, valide et commence par la lettre choisie
+                return isUnique && hasValidProperties && startsWithCurrentLetter;
             });
 
-            // Ajouter les jeux filtrés à la liste existante
-            setGames(prevGames => [...prevGames, ...filteredGames]);
+            // Ajouter les identifiants uniques au `Set`
+            uniqueGames.forEach(game => gameIds.current.add(game.id));
 
-            // Mettre à jour les identifiants uniques déjà chargés
-            filteredGames.forEach(game => gameIds.current.add(game.id));
+            // Ajouter les jeux uniques au tableau
+            setGames(prev => [...prev, ...uniqueGames]);
 
             // Vérifier s'il reste d'autres pages à charger
             setHasMore(!!data.next);
+            setPage(prevPage => prevPage + 1);
         } catch (error) {
             console.error('Erreur lors de la récupération des jeux :', error.message);
+            setHasMore(false);
+        } finally {
+            setLoading(false);
         }
     };
 
-    // Charger les jeux lors du chargement initial et sur modification du tri
+    // Charger les jeux lors du changement de tri ou de lettre
     useEffect(() => {
-        loadGames();
-    }, [page, ordering]);
-
-    // Gestionnaire d'événement pour la sélection du filtre
-    const handleOrderingChange = (event) => {
         setGames([]);
         setPage(1);
         setHasMore(true);
-        gameIds.current.clear(); // Réinitialiser les identifiants uniques
+        gameIds.current.clear(); // Réinitialiser le suivi des identifiants uniques
+        loadGames(); // Charger la première page
+    }, [ordering, currentLetter]);
+
+    // Gestionnaire d'événement pour la sélection de la lettre
+    const handleLetterChange = (event) => {
+        setCurrentLetter(event.target.value);
+    };
+
+    // Gestionnaire d'événement pour la sélection du tri
+    const handleOrderingChange = (event) => {
         setOrdering(event.target.value);
     };
 
-    // Gestionnaire d'événement de défilement pour charger plus de jeux
+    // Gestionnaire d'événement pour charger la page suivante lors du défilement
     useEffect(() => {
         const handleScroll = () => {
-            if (window.innerHeight + document.documentElement.scrollTop >= document.documentElement.scrollHeight - 100 && hasMore) {
-                setPage(prevPage => prevPage + 1);
+            if (window.innerHeight + document.documentElement.scrollTop >= document.documentElement.scrollHeight - 100 && !loading && hasMore) {
+                loadGames();
             }
         };
 
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
-    }, [hasMore]);
+    }, [loading, hasMore]);
 
     return (
         <>
@@ -89,11 +114,20 @@ function AllGamesPage() {
                 <section>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                         <h1>All games</h1>
-                        <select onChange={handleOrderingChange} value={ordering} aria-label="Filtrer par">
-                            <option value="">Par défaut</option>
-                            <option value="name">Nom (A-Z)</option>
-                            <option value="-name">Nom (Z-A)</option>
-                        </select>
+                        <div>
+                            <label htmlFor="letter">Filtrer par Lettre : </label>
+                            <select onChange={handleLetterChange} value={currentLetter} aria-label="Filtrer par Lettre">
+                                <option value="">Tous</option>
+                                {[...'ABCDEFGHIJKLMNOPQRSTUVWXYZ'].map(letter => (
+                                    <option key={letter} value={letter}>{letter}</option>
+                                ))}
+                            </select>
+                            <select onChange={handleOrderingChange} value={ordering} aria-label="Filtrer par">
+                                <option value="">Par défaut</option>
+                                <option value="slug">Nom (A-Z)</option>
+                                <option value="-slug">Nom (Z-A)</option>
+                            </select>
+                        </div>
                     </div>
                     <div className="container container-all-games-page">
                         {games.map(game => (
