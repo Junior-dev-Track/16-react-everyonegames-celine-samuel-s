@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function FutureGames() {
     const [games, setGames] = useState([]);
@@ -27,13 +28,17 @@ export default function FutureGames() {
     };
 
     return (
+        <>
+            {/* <hr /> */}
         <div className="container">
-            <h2 className='popular'>Upcoming 2024 Releases</h2>
-            <hr />
+        <h2 className='popular'>Upcoming 2024 Releases</h2>
+            <article>
             {games.length > 0 && games[currentIndex] && (
                 <div className='game_popular'>
-                    <h2>{games[currentIndex].name}</h2>
-                    <img src={games[currentIndex].background_image} alt={games[currentIndex].name}/>
+                    <h3>{games[currentIndex].name}</h3>
+                    <Link to={`/game/${games[currentIndex].id}`}>
+                        <img src={games[currentIndex].background_image} alt={games[currentIndex].name}/>
+                    </Link>
                     {games[currentIndex].metacritic && (
                         <div className="metacritic-score">
                             Metacritic Score: {games[currentIndex].metacritic}
@@ -45,6 +50,8 @@ export default function FutureGames() {
                     </div>
                 </div>
             )}
+            </article>
         </div>
+        </>
     );
 }

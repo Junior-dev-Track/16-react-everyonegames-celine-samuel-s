@@ -113,7 +113,7 @@ function AllGamesPage() {
             <main>
                 <section>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                        <h1>Tous les Jeux</h1>
+                        <h1>All games</h1>
                         <div>
                             <label htmlFor="letter">Filtrer par Lettre : </label>
                             <select onChange={handleLetterChange} value={currentLetter} aria-label="Filtrer par Lettre">

@@ -1,58 +1,33 @@
+@use './general.scss';
+
 .container-all-games-page {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
-    gap: 1%;
+    column-gap: 2%;
+    row-gap: 30px;
     
     a {
         width: 20%;
         height: 100%;
 
         .game-card {
+            padding: 0;
             width: 100%;
-            height: 550px;
+            height: 460px;
             display: flex;
             flex-direction: column;
-            margin: 1%;
-            border: 1px solid #000000;
             border-radius: 15px;
-
-            h2 {
-                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-                font-size: 20px;
-                color: #E53935;
-                text-transform: uppercase;
-                text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-                margin-bottom: 8px;
-                height: 60px; // Hauteur fixe pour contenir le texte
-                overflow: hidden; // Empêche le débordement de texte
-                display: -webkit-box;
-                -webkit-line-clamp: 2; // Limite à deux lignes
-                -webkit-box-orient: vertical;
-            }
-
-            h2:hover {
-                color: #3F51B5;
-                cursor: pointer;
-            }
 
             p:before {
                 content: "•";
                 margin-right: 8px;
-                color: #E53935;
+                color: general.$color-dark-blue;
             }
 
             p {
-                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-                color: #333;
-                font-size: 16px;
-                line-height: 1.5;
-                margin-bottom: 5px;
-
-                &:last-child {
-                    margin-bottom: 0; // Assure que la marge du bas est retirée pour le dernier paragraphe
-                }
+                margin-bottom: 15px;
             }
 
             .game-img {
@@ -78,7 +53,16 @@
                 gap: 5px;
                 width: 95%;
                 margin: auto;
-                padding: 10px;
+                // padding: 30px;
+                text-align: center;
+                justify-content: center;
+
+                .game-rating-released {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    gap: 10px;
+                }
 
                 .game-genres {
                     display: flex;
@@ -90,12 +74,15 @@
                 .game-platform {
                     display: flex;
                     flex-direction: row;
-                    justify-content: left;
-                    gap: 5px;
+                    justify-content: center;
+                    gap: 10px;
+                    flex-wrap: wrap;
+                    color: general.$color-white;
                     li {
-                        img {
+                        // margin: 0 5px;
+                        svg {
                             width: 20px;
-                            height: 20px;
+                            height: auto;
                         }
                     }
                 }

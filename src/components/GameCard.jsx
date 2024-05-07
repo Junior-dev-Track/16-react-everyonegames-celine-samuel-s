@@ -86,9 +86,11 @@ export default function GameCard({ game }) {
                     )}
                 </div>
                 <div className="game-info">
-                    <h2>{game.name}</h2> {/* Titre complet affiché */}
-                    <p>Évaluation : {game.rating || 'Non évalué'}</p>
-                    <p>Sortie : {releaseDate}</p>
+                    <h4>{game.name}</h4>  {/* Titre complet affiché */}
+                    <div className="game-rating-released">
+                        <p>Rating: {game.rating || 'Non évalué'}</p>
+                        <p>Released: {releaseDate}</p>
+                    </div>
                     <ul className="game-platform">
                         {game.parent_platforms.map(platform => (
                             <Platform platform={platform} key={platform.id} />

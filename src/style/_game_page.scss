@@ -1,3 +1,5 @@
+@use './general.scss';
+
 .container-game-page {
     display: flex;
     // flex-direction: column;
@@ -81,8 +83,8 @@
                 gap: 5px;
                 justify-content: center;
                 
-                img {
-                    width: 20px;
+                svg {
+                    width: 25px;
                     height: auto;
                 }
             }
@@ -102,10 +104,11 @@
             }
         }
         .aButton {
-            color: #189d00;
+            // color: general.$color-light-blue;
+            color: general.$color-white;
             font-size: 14px;
             font-weight: 600;
-            background-color: #072d00;
+            background-color: general.$color-dark-blue;
             border-radius: 5%;
             padding: 5px;
         }
@@ -131,11 +134,11 @@
             gap: 10px;
             li {
                 padding: 5px;
-                border: 1px solid #000000;
-                color: #189d00;
+                // border: 1px solid #000000;
+                color: general.$color-light-blue;
                 font-size: 14px;
                 font-weight: 600;
-                background-color: #072d00;
+                background-color: general.$color-dark-blue;
                 border-radius: 5%;
                 padding: 5px;
             }

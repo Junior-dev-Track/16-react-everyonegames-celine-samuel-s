@@ -1,10 +1,12 @@
+@use './general.scss';
+
 /***********************/
 /*        FOOTER       */
 /***********************/
 
 footer {
-    background-color: #222; // Couleur de fond sombre pour le footer
-    color: #ccc; // Couleur de base des textes
+    background-color: general.$color-dark-black; // Couleur de fond sombre pour le footer
+    color: general.$color-white; // Couleur de base des textes
     padding: 10px 0; // Padding vertical pour le footer
 
     .container {
@@ -16,11 +18,11 @@ footer {
         svg {
             width: 50px; // Taille réduite pour les SVG
             height: auto;
-            fill: #ccc; // Couleur des icônes SVG
+            fill: general.$color-white; // Couleur des icônes SVG
             margin: 0 5px; // Espacement réduit entre les SVG
 
             &:hover {
-                fill: #007BFF; // Changement de couleur au survol
+                fill: general.$color-light-blue; // Changement de couleur au survol
             }
         }
     }
