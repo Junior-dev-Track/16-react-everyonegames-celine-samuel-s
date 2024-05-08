@@ -442,6 +442,8 @@ footer .container svg:hover {
   text-align: center;
   gap: 10px;
   height: 100%;
+  width: 90%;
+  margin: auto;
 }
 .game_popular a {
   width: 100%;
