@@ -11,7 +11,6 @@ function App() {
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<HomePage />} />
-                <Route path="/about" element={<AboutPage />} />
                 <Route path="/allgames" element={<AllGamesPage />} />
                 <Route path="/game/:id" element={<GamesPage />} /> {/* Corrected route */}
             </Routes>
