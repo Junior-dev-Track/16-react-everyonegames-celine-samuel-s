@@ -1,185 +1,186 @@
 @use './general.scss';
 
 .container-game-page {
+  display: flex;
+  .game-images {
     display: flex;
-    // flex-direction: column;
-    .game-images {
+    flex-direction: column;
+    align-items: center;
+    width: 70%;
+    height: auto;
+    gap: 20px;
+    justify-content: center;
+
+    .main-img {
+        position: relative;
+        width: 80%; // Ajustez selon vos besoins
+        height: 500px; // Ajustez en fonction du ratio souhaité
+      
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain; // Conserve les proportions originales
+        }
+      
+        .carousel-button {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          background-color: rgba(0, 0, 0, 0.5);
+          color: #fff;
+          border: none;
+          cursor: pointer;
+          padding: 10px;
+          z-index: 1;
+      
+          &:hover {
+            background-color: rgba(0, 0, 0, 0.7); // Assombrit le bouton lors du survol
+          }
+        }
+      
+        .previous {
+          left: 20px; // Éloigne le bouton gauche du bord
+        }
+      
+        .next {
+          right: 20px; // Éloigne le bouton droit du bord
+        }
+      }
+      
+      
+  }
+
+  .game-info-important {
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 30%;
+
+    .game-info-important-content {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      .list-container {
         display: flex;
         flex-direction: column;
-        align-items: center;
-        width: 70%;
-        height: auto;
-        gap: 20px;
-        justify-content: center;
-        .main-img {
-            width: 80%;
-            height: 350px;
-            img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-            }
-        }
-        .other-images {
-            width: 90%;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            justify-content: center;
+        gap: 10px;
 
-            .flex-container {
-                display: flex;
-                flex-direction: column;
-                gap: 10px;
-                width: inherit;
-                .container-movies {
-                    display:flex;
-                    flex-direction: row;
-                    align-items: center;
-                    gap: 10px;
-                    justify-content: center;
-                }
-                .game-movies,
-                .game-screenshots {
-                    flex-wrap: wrap;
-                    display: flex;
-                    flex-direction: row;
-                    gap: 10px;
-                    overflow: hidden;
-                    justify-content: center;
-                    img,
-                    video {
-                        width: 100px;
-                        height: 100px;
-                        object-fit: cover;
-                    }
-                }
-            }
+        .game-genres {
+          display: flex;
+          flex-direction: row;
+          gap: 10px;
         }
+      }
+
+      .information-content {
+        text-align: right;
+
+        .game-stores {
+          display: flex;
+          margin: 10px 0;
+          justify-content: center;
+          flex-wrap: wrap;
+          row-gap: 20px;
+
+          li {
+            margin: 0 5px;
+          }
+        }
+
+        .game-platform {
+          display: flex;
+          flex-direction: row;
+          gap: 5px;
+          justify-content: center;
+
+          svg {
+            width: 25px;
+            height: auto;
+          }
+        }
+
+        .a-website {
+          color: general.$color-white;
+        }
+
+        .a-website:hover {
+          color: general.$color-light-blue;
+        }
+      }
     }
 
-    .game-info-important {
-        margin: 20px;
+    .small-infos {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .game-metacritics {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+
+      .game-metacritics-info {
         display: flex;
-        flex-direction: column;
-        gap: 20px;
-        width: 30%;
+        gap: 5px;
 
-        .game-info-important-content {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            
-            .list-container {
-                // margin-left: 10px;
-                display: flex;
-                flex-direction: column;
-                gap: 10px;
-                
-
-                .game-genres {
-                    display: flex;
-                    flex-direction: row;
-                    gap: 10px;
-                }
-            }
-            .information-content{
-                // margin-bottom: 5px;
-                text-align: right;
-                .game-stores {
-                    display: flex;
-                    margin: 10px 0;
-                    justify-content: center;
-                    flex-wrap: wrap;
-                    row-gap: 20px;
-                    // margin: 5px 0;
-                    li {
-                        margin: 0 5px;
-                    }
-                }
-                .game-platform {
-                    display: flex;
-                    flex-direction: row;
-                    gap: 5px;
-                    justify-content: center;
-                    
-                    svg {
-                        width: 25px;
-                        height: auto;
-                    }
-                }
-                .a-website {
-                    color: general.$color-white;
-                    // font-size:
-                }
-                .a-website:hover {
-                    color: general.$color-light-blue;
-                }
-            }
+        p {
+          font-size: 1rem;
         }
-
-        .small-infos {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: center
-        }
-
-        .game-metacritics {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            gap: 10px;
-            justify-content: center;
-            .game-metacritics-info {
-                display: flex;
-                gap: 5px;
-                p {
-                    font-size: 1rem;
-                }
-            }
-        }
-        .aButton {
-            color: general.$color-white;
-            font-size: 14px;
-            font-weight: 600;
-            background-color: general.$color-dark-blue;
-            border-radius: 5%;
-            padding: 5px;
-        }
-        .aButton:hover {
-            background-color: darken($color: general.$color-dark-blue, $amount: 10%);
-        }
+      }
     }
+
+    .aButton {
+      color: general.$color-white;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: general.$color-dark-blue;
+      border-radius: 5%;
+      padding: 5px;
+    }
+
+    .aButton:hover {
+      background-color: darken($color: general.$color-dark-blue, $amount: 10%);
+    }
+  }
 }
 
 .container-game-page-description {
-    display: flex;
-    h2 {
-        margin-bottom: 15px;
+  display: flex;
+
+  h2 {
+    margin-bottom: 15px;
+  }
+
+  .game-description {
+    width: 70%;
+    margin: 20px;
+  }
+
+  .game-info-others {
+    width: 30%;
+    margin: 20px;
+
+    .game-tags {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 10px;
+
+      li {
+        padding: 5px;
+        color: general.$color-light-blue;
+        font-size: 14px;
+        font-weight: 600;
+        background-color: general.$color-dark-blue;
+        border-radius: 5%;
+        padding: 5px;
+      }
     }
-    .game-description {
-        width: 70%;
-        margin: 20px;
-    }
-    .game-info-others {
-        width: 30%;
-        margin: 20px;
-        .game-tags {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            gap: 10px;
-            li {
-                padding: 5px;
-                // border: 1px solid #000000;
-                color: general.$color-light-blue;
-                font-size: 14px;
-                font-weight: 600;
-                background-color: general.$color-dark-blue;
-                border-radius: 5%;
-                padding: 5px;
-            }
-        }
-    }
+  }
 }
