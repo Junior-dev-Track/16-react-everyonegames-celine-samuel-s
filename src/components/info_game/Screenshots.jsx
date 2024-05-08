@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
-export default function Screenshots({ id, handleZoom, resetZoom, zoomedImage, setZoomedImage }) {
+export default function Screenshots({ id, handleZoom, resetZoom, zoomedImage, setZoomedImage, isZoomed, setIsZoomed }) {
     const [gameScreenshot, setGameScreenshot] = useState([]);
-    // const [zoomedImage, setZoomedImage] = useState(null); // Use a different state variable for zoomed image
 
     useEffect(() => {
         fetch(`https://api.rawg.io/api/games/${id}/screenshots?key=${import.meta.env.VITE_REACT_APP_RAWG_API_KEY}`)
@@ -15,6 +14,7 @@ export default function Screenshots({ id, handleZoom, resetZoom, zoomedImage, se
     useEffect(() => {
         if (!zoomedImage) {
             setZoomedImage(null);
+            setIsZoomed(false); // Also reset the zoomed state
         }
     }, [zoomedImage]);
 
@@ -28,21 +28,33 @@ export default function Screenshots({ id, handleZoom, resetZoom, zoomedImage, se
                     alt={screenshot.id} 
                 />
             ))}
-            {zoomedImage && (
-                <img 
-                    onClick={resetZoom} 
-                    src={zoomedImage.image} 
-                    alt={zoomedImage.id} 
-                    style={{
-                        display: 'block',
-                        position: 'fixed',
-                        top: '45%',
-                        left: '50%',
-                        transform: 'scale(8)',
-                        transition: 'transform 0.3s ease-in-out',
-                        textAlign: 'center'
-                    }} // Apply zoom effect
-                />
+            {isZoomed && (
+                <div 
+                onClick={resetZoom}
+                style={{
+                    position: 'fixed',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '100%',
+                    backgroundColor: 'rgba(0, 0, 0, 0.5)', // Semi-transparent background
+                    zIndex: 9999, // Ensure it's above other content
+                }}>
+                    <img 
+                        src={zoomedImage.image} 
+                        alt={zoomedImage.id} 
+                        style={{
+                            display: 'block',
+                            position: 'fixed',
+                            top: '45%',
+                            left: '50%',
+                            transform: 'scale(6)',
+                            transition: 'transform 0.3s ease-in-out',
+                            textAlign: 'center',
+                            zIndex: 10000, // Ensure it's above the background
+                        }}
+                    />
+                </div>
             )}
         </div>
     );
