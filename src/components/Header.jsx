@@ -62,7 +62,6 @@ export default function Header() {
                     <ul>
                         <li>
                             <Link to='/allgames'>Browse games</Link>
-                            <Link to='/about'>About</Link>
                         </li>
                     </ul>
                 </nav>
