@@ -145,7 +145,11 @@ function AllGamesPage() {
         loadGames();
       }
     };
-    
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [loading, hasMore]);
+
   return (
     <>
       <Header />
