@@ -7,17 +7,19 @@ import Platform from '../components/info_game/Platform';
 function GamePage() {
   const { id } = useParams();
   const [gameInfo, setGameInfo] = useState({});
-  const [screenshots, setScreenshots] = useState([]);
+  const [carouselItems, setCarouselItems] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     setLoading(true);
-    // Fetch game information
+
+    // Récupérer les informations du jeu
     fetch(`https://api.rawg.io/api/games/${id}?key=${import.meta.env.VITE_REACT_APP_RAWG_API_KEY}`)
       .then((response) => response.json())
       .then((data) => {
         setGameInfo(data);
+        console.log('Game info:', data); // Vérifiez ici si `background_image` existe
         setLoading(false);
       })
       .catch((error) => {
@@ -25,21 +27,38 @@ function GamePage() {
         setLoading(false);
       });
 
-    // Fetch screenshots
-    fetch(`https://api.rawg.io/api/games/${id}/screenshots?key=${import.meta.env.VITE_REACT_APP_RAWG_API_KEY}`)
-      .then((response) => response.json())
-      .then((data) => {
-        setScreenshots(data.results || []);
-      })
-      .catch((error) => console.error('Error fetching screenshots:', error));
+    // Récupérer les captures d'écran et une seule vidéo (le trailer)
+    Promise.all([
+      fetch(`https://api.rawg.io/api/games/${id}/screenshots?key=${import.meta.env.VITE_REACT_APP_RAWG_API_KEY}`)
+        .then((response) => response.json())
+        .then((data) => data.results || []),
+      fetch(`https://api.rawg.io/api/games/${id}/movies?key=${import.meta.env.VITE_REACT_APP_RAWG_API_KEY}`)
+        .then((response) => response.json())
+        .then((data) => data.results[0] || null)
+    ]).then(([screenshots, trailer]) => {
+      // Organiser les éléments dans le carrousel
+      const initialCarouselItems = [];
+      if (gameInfo.background_image) {
+        initialCarouselItems.push({ type: 'image', url: gameInfo.background_image });
+      } else {
+        console.log('Background image is missing'); // Indiquez si le champ est manquant
+      }
+
+      screenshots.forEach((screenshot) => initialCarouselItems.push({ type: 'image', url: screenshot.image }));
+      if (trailer) {
+        initialCarouselItems.push({ type: 'video', url: trailer.data.max });
+      }
+
+      setCarouselItems(initialCarouselItems);
+    }).catch((error) => console.error('Error fetching screenshots and video:', error));
   }, [id]);
 
   const handleNext = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % screenshots.length);
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % carouselItems.length);
   };
 
   const handlePrevious = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + screenshots.length) % screenshots.length);
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + carouselItems.length) % carouselItems.length);
   };
 
   if (loading) {
@@ -49,6 +68,9 @@ function GamePage() {
       </section>
     );
   }
+
+  // Assurez-vous que l'élément actuel est bien récupéré
+  const currentItem = carouselItems[currentIndex] || {};
 
   return (
     <>
@@ -61,15 +83,16 @@ function GamePage() {
         <section className="container container-game-page">
           <div className="game-images">
             <div className="main-img">
-              {screenshots.length > 0 ? (
-                <>
-                  <button className="carousel-button previous" onClick={handlePrevious}>◀</button>
-                  <img src={screenshots[currentIndex].image} alt={`Screenshot ${currentIndex + 1}`} />
-                  <button className="carousel-button next" onClick={handleNext}>▶</button>
-                </>
+              <button className="carousel-button previous" onClick={handlePrevious}>◀</button>
+              {currentItem.type === 'image' ? (
+                <img src={currentItem.url} alt={`Carousel item ${currentIndex + 1}`} />
               ) : (
-                <img src={gameInfo.background_image} alt={gameInfo.name} />
+                <video key={currentItem.url} controls>
+                  <source src={currentItem.url} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
               )}
+              <button className="carousel-button next" onClick={handleNext}>▶</button>
             </div>
           </div>
 
@@ -117,9 +140,9 @@ function GamePage() {
             )}
 
             <div className="game-info-important-content small-infos">
-              <h5>Rating: </h5>
+              <h5>Rating:</h5>
               <div className="information-content">
-                <p>{gameInfo.rating}</p>
+                <p>{gameInfo.rating || 'N/A'}</p>
               </div>
             </div>
 

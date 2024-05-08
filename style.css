@@ -401,11 +401,13 @@ footer .container svg:hover {
   width: 80%;
   height: 500px;
 }
-.container-game-page .game-images .main-img img {
+.container-game-page .game-images .main-img img,
+.container-game-page .game-images .main-img video {
   width: 100%;
   height: 100%;
   -o-object-fit: contain;
      object-fit: contain;
+  border-radius: 10px;
 }
 .container-game-page .game-images .main-img .carousel-button {
   position: absolute;

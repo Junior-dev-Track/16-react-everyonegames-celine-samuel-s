@@ -12,42 +12,42 @@
     justify-content: center;
 
     .main-img {
-        position: relative;
-        width: 80%; // Ajustez selon vos besoins
-        height: 500px; // Ajustez en fonction du ratio souhaité
-      
-        img {
-          width: 100%;
-          height: 100%;
-          object-fit: contain; // Conserve les proportions originales
-        }
-      
-        .carousel-button {
-          position: absolute;
-          top: 50%;
-          transform: translateY(-50%);
-          background-color: rgba(0, 0, 0, 0.5);
-          color: #fff;
-          border: none;
-          cursor: pointer;
-          padding: 10px;
-          z-index: 1;
-      
-          &:hover {
-            background-color: rgba(0, 0, 0, 0.7); // Assombrit le bouton lors du survol
-          }
-        }
-      
-        .previous {
-          left: 20px; // Éloigne le bouton gauche du bord
-        }
-      
-        .next {
-          right: 20px; // Éloigne le bouton droit du bord
+      position: relative;
+      width: 80%;
+      height: 500px;
+
+      img,
+      video {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        border-radius: 10px;
+      }
+
+      .carousel-button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: rgba(0, 0, 0, 0.5);
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        padding: 10px;
+        z-index: 1;
+
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.7);
         }
       }
-      
-      
+
+      .previous {
+        left: 20px;
+      }
+
+      .next {
+        right: 20px;
+      }
+    }
   }
 
   .game-info-important {
