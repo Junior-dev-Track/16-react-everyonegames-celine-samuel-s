@@ -30,28 +30,28 @@ export default function FutureGames() {
     return (
         <>
             {/* <hr /> */}
-        <div className="container">
-        <h2 className='popular'>Upcoming 2024 Releases</h2>
-            <article>
-            {games.length > 0 && games[currentIndex] && (
-                <div className='game_popular'>
-                    <h3>{games[currentIndex].name}</h3>
-                    <Link to={`/game/${games[currentIndex].id}`}>
-                        <img src={games[currentIndex].background_image} alt={games[currentIndex].name}/>
-                    </Link>
-                    {games[currentIndex].metacritic && (
-                        <div className="metacritic-score">
-                            Metacritic Score: {games[currentIndex].metacritic}
+        <section className="container container-article">
+            <h2 className='popular'>Upcoming 2024 Releases</h2>
+                <article>
+                {games.length > 0 && games[currentIndex] && (
+                    <div className='game_popular'>
+                        <h3>{games[currentIndex].name}</h3>
+                        <Link to={`/game/${games[currentIndex].id}`}>
+                            <img src={games[currentIndex].background_image} alt={games[currentIndex].name}/>
+                        </Link>
+                        {games[currentIndex].metacritic && (
+                            <div className="metacritic-score">
+                                Metacritic Score: {games[currentIndex].metacritic}
+                            </div>
+                        )}
+                        <div className="navigation-buttons">
+                            <button onClick={prevGame}>&lt;</button> {/* Flèche gauche */}
+                            <button onClick={nextGame}>&gt;</button> {/* Flèche droite */}
                         </div>
-                    )}
-                    <div className="navigation-buttons">
-                        <button onClick={prevGame}>&lt;</button> {/* Flèche gauche */}
-                        <button onClick={nextGame}>&gt;</button> {/* Flèche droite */}
                     </div>
-                </div>
-            )}
-            </article>
-        </div>
+                )}
+                </article>
+        </section>
         </>
     );
 }
