@@ -73,6 +73,7 @@ html {
 }
 
 .container-article {
+  background: -webkit-gradient(linear, left bottom, left top, from(rgb(34, 34, 34)), color-stop(50%, rgb(1, 29, 60)), color-stop(100%, rgb(0, 56, 116)), color-stop(222%, rgb(34, 34, 34)), color-stop(222%, rgb(2, 0, 36)), color-stop(333%, rgb(9, 9, 121)));
   background: linear-gradient(0deg, rgb(34, 34, 34) 0%, rgb(1, 29, 60) 50%, rgb(0, 56, 116) 100%, rgb(34, 34, 34) 222%, rgb(2, 0, 36) 222%, rgb(9, 9, 121) 333%);
   border-radius: 60px;
   padding: 20px 0;
@@ -159,6 +160,8 @@ header {
           align-items: center;
 }
 header .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -191,7 +194,16 @@ header .search-bar input[type=text] {
   border: 1px solid #555;
   border-radius: 4px;
 }
+header .search-bar input[type=text]::-webkit-input-placeholder {
+  color: #666;
+}
 header .search-bar input[type=text]::-moz-placeholder {
+  color: #666;
+}
+header .search-bar input[type=text]:-ms-input-placeholder {
+  color: #666;
+}
+header .search-bar input[type=text]::-ms-input-placeholder {
   color: #666;
 }
 header .search-bar input[type=text]::placeholder {
@@ -287,32 +299,46 @@ footer .container svg:hover {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  -moz-column-gap: 2%;
-       column-gap: 2%;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-column-gap: 2%;
+     -moz-column-gap: 2%;
+          column-gap: 2%;
   row-gap: 30px;
-  align-items: stretch;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
 }
 .container-all-games-page .container-article {
   width: 20%;
   border-radius: 15px;
   padding: 0;
+  -webkit-transition: -webkit-transform 0.3s ease;
+  transition: -webkit-transform 0.3s ease;
   transition: transform 0.3s ease;
+  transition: transform 0.3s ease, -webkit-transform 0.3s ease;
 }
 .container-all-games-page .container-article:hover {
-  transform: scale(1.05);
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
 }
 .container-all-games-page .container-article .game-card {
   padding: 0;
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
   border-radius: 15px;
-  flex-grow: 1;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
 }
 .container-all-games-page .container-article .game-card p:before {
   content: "•";
@@ -340,18 +366,32 @@ footer .container svg:hover {
   border-radius: 15px 15px 0 0;
 }
 .container-all-games-page .container-article .game-card .game-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   width: 95%;
   margin: 15px auto;
   text-align: center;
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 .container-all-games-page .container-article .game-card .game-info .game-name-numbers {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 .container-all-games-page .container-article .game-card .game-info .game-name-numbers .game-rating-released {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
@@ -363,6 +403,8 @@ footer .container svg:hover {
   gap: 10px;
 }
 .container-all-games-page .container-article .game-card .game-info .game-platform {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
@@ -396,6 +438,7 @@ footer .container svg:hover {
       -ms-flex-align: center;
           align-items: center;
   text-align: center;
+  gap: 10px;
 }
 .game_popular a {
   width: 80%;
@@ -702,28 +745,46 @@ footer .container svg:hover {
 }
 
 .new-all-games {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   gap: 5%;
 }
 .new-all-games .container {
   margin: 0;
 }
 .new-all-games .container .browse-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   width: 95%;
   margin: 20px auto 10px auto;
   gap: 15px;
 }
 .new-all-games .container .browse-container .browse-game-card {
   border-radius: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   color: #ccc;
   gap: 15px;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 .new-all-games .container .browse-container .browse-game-card .browse-game-info {
   width: 70%;
@@ -741,13 +802,30 @@ footer .container svg:hover {
 .new-all-games .container-article {
   padding: 20px 25px;
 }
+.new-all-games .container-news {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 30px;
+}
 
 .filter {
   width: 90%;
   margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  justify-content: left !important;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: left !important;
+      -ms-flex-pack: left !important;
+          justify-content: left !important;
   gap: 15px;
   font-family: "Roboto", sans-serif;
 }
@@ -755,6 +833,8 @@ footer .container svg:hover {
   font-size: 1rem;
 }
 .filter .filter-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   gap: 10px;
 }
@@ -768,8 +848,12 @@ footer .container svg:hover {
 }
 
 .select-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   margin-bottom: 15px;
   gap: 10px;
 }
@@ -788,8 +872,10 @@ footer .container svg:hover {
   color: #e0e0e0;
   font-size: 14px;
   cursor: pointer;
+  -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
-  box-shadow: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 .select-container select:focus {
   outline: none;
@@ -797,8 +883,12 @@ footer .container svg:hover {
   background-color: #333333;
 }
 .select-container select:focus .select-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   margin-bottom: 15px;
   gap: 10px;
   font-family: "Arial", sans-serif;
@@ -817,8 +907,10 @@ footer .container svg:hover {
   color: #e0e0e0;
   font-size: 14px;
   cursor: pointer;
+  -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
-  box-shadow: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
   font-family: inherit;
 }
 .select-container select:focus .select-container select:focus {
