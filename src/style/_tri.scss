@@ -1,41 +1,41 @@
 .select-container {
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px;
-  
-    label {
-      margin-right: 10px;
-      font-weight: bold;
-      color: #007bff; /* Bleu plus moderne */
-      font-size: 16px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  gap: 10px; // Espacement entre chaque filtre
+
+  label {
+    margin-right: 10px;
+    font-weight: bold;
+    color: #e0e0e0; // Texte clair pour correspondre au style sombre
+    font-size: 14px;
+  }
+
+  select {
+    padding: 10px 14px; // Ajout de l'espacement intérieur
+    border-radius: 6px;
+    border: 1px solid #4f4f4f; // Bordure grise pour correspondre à la capture
+    background-color: #212121; // Couleur de fond sombre
+    color: #e0e0e0; // Texte clair pour correspondre au style sombre
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    box-shadow: none; // Retrait des ombres pour un style plus minimaliste
+
+    &:focus {
+      outline: none;
+      border-color: #757575; // Bordure plus claire lors du focus
+      background-color: #333333; // Légère variation de la couleur de fond au focus
     }
-  
-    select {
-      padding: 12px;
-      border-radius: 8px;
-      border: 2px solid #007bff; /* Bordure plus contrastée */
-      background-color: #f0f8ff;
-      color: #007bff; /* Texte bleu moderne */
-      font-size: 14px;
-      cursor: pointer;
-      transition: all 0.3s ease; /* Transition plus fluide */
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Légère ombre pour donner de la profondeur */
-  
-      &:focus {
-        outline: none;
-        border-color: #0056b3; /* Couleur bordure en focus */
-        background-color: #ffffff; /* Couleur de fond en focus */
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Ombre plus prononcée lors du focus */
-      }
-  
-      &:hover {
-        border-color: #0056b3; /* Couleur bordure en hover */
-        background-color: #e7f1ff; /* Fond légèrement différent en hover */
-      }
-  
-      option {
-        color: #007bff; /* Texte des options */
-      }
+
+    &:hover {
+      border-color: #757575; // Bordure plus claire lors du survol
+    }
+
+    option {
+      color: #e0e0e0; // Texte clair
+      background-color: #212121; // Couleur de fond sombre
     }
   }
-  
+}
+

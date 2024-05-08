@@ -12,7 +12,8 @@ function AllGamesPage() {
   const [hasMore, setHasMore] = useState(true);
   const [currentLetter, setCurrentLetter] = useState("");
   const [selectedPlatform, setSelectedPlatform] = useState("");
-  const gameIds = useRef(new Set()); // Ensemble pour suivre les identifiants uniques
+  const [sortOrder, setSortOrder] = useState("rating");
+  const gameIds = useRef(new Set());
 
   // Charger les jeux par page
   const loadGames = async () => {
@@ -22,12 +23,11 @@ function AllGamesPage() {
       return;
     }
 
-    if (loading || !hasMore) return; // Empêcher plusieurs appels simultanés
+    if (loading || !hasMore) return;
 
     setLoading(true);
 
-    // Construire l'URL de la requête avec les paramètres nécessaires
-    let url = `https://api.rawg.io/api/games?key=${apiKey}&page=${page}&ordering=-rating`;
+    let url = `https://api.rawg.io/api/games?key=${apiKey}&page=${page}&ordering=-${sortOrder}`;
     if (currentLetter) {
       url += `&search=${currentLetter}`;
     }
@@ -49,31 +49,21 @@ function AllGamesPage() {
       const data = await response.json();
       console.log("Fetched data:", data.results);
 
-      // Filtrer les jeux en s'assurant qu'ils sont uniques, valides et commencent par la lettre choisie
       const uniqueGames = data.results.filter((game) => {
-        // Vérifiez que l'ID n'est pas déjà dans `gameIds`
         const isUnique = !gameIds.current.has(game.id);
+        const hasValidProperties = game.name && game.background_image && game.parent_platforms;
+        const startsWithCurrentLetter = currentLetter ? game.name.toUpperCase().startsWith(currentLetter) : true;
+        const esrbRating = game.esrb_rating?.slug || "";
+        const isNotAdult = !["adult-only", "mature"].includes(esrbRating);
+        const tags = game.tags?.map((tag) => tag.slug) || [];
+        const isNotNSFW = !tags.includes("nsfw");
 
-        // Vérifiez que les propriétés essentielles existent
-        const hasValidProperties =
-          game.name && game.background_image && game.parent_platforms;
-
-        // Filtrer par lettre initiale
-        const startsWithCurrentLetter = currentLetter
-          ? game.name.toUpperCase().startsWith(currentLetter)
-          : true;
-
-        // Ajoutez le jeu uniquement s'il est unique, valide et commence par la lettre choisie
-        return isUnique && hasValidProperties && startsWithCurrentLetter;
+        return isUnique && hasValidProperties && startsWithCurrentLetter && isNotAdult && isNotNSFW;
       });
 
-      // Ajouter les identifiants uniques au `Set`
       uniqueGames.forEach((game) => gameIds.current.add(game.id));
-
-      // Ajouter les jeux uniques au tableau
       setGames((prev) => [...prev, ...uniqueGames]);
 
-      // Vérifier s'il reste d'autres pages à charger
       setHasMore(!!data.next);
       setPage((prevPage) => prevPage + 1);
     } catch (error) {
@@ -84,14 +74,14 @@ function AllGamesPage() {
     }
   };
 
-  // Charger les jeux lors du changement de lettre, de genre ou de plateforme
+  // Charger les jeux lors du changement de lettre, de genre, de plateforme ou de tri
   useEffect(() => {
     setGames([]);
     setPage(1);
     setHasMore(true);
-    gameIds.current.clear(); // Réinitialiser le suivi des identifiants uniques
-    loadGames(); // Charger la première page
-  }, [currentLetter, selectedGenre, selectedPlatform]);
+    gameIds.current.clear();
+    loadGames();
+  }, [currentLetter, selectedGenre, selectedPlatform, sortOrder]);
 
   // Charger les genres disponibles
   useEffect(() => {
@@ -108,40 +98,32 @@ function AllGamesPage() {
         const data = await response.json();
         setGenres(data.results);
       } catch (error) {
-        console.error(
-          "Erreur lors de la récupération des genres :",
-          error.message
-        );
+        console.error("Erreur lors de la récupération des genres :", error.message);
       }
     };
 
     loadGenres();
   }, []);
 
-  // Gestionnaire d'événement pour la sélection de la lettre
   const handleLetterChange = (event) => {
     setCurrentLetter(event.target.value);
   };
 
-  // Gestionnaire d'événement pour la sélection du genre
   const handleGenreChange = (event) => {
     setSelectedGenre(event.target.value);
   };
 
-  // Gestionnaire d'événement pour la sélection de la plateforme
   const handlePlatformChange = (event) => {
     setSelectedPlatform(event.target.value);
   };
 
-  // Gestionnaire d'événement pour charger la page suivante lors du défilement
+  const handleSortOrderChange = (event) => {
+    setSortOrder(event.target.value);
+  };
+
   useEffect(() => {
     const handleScroll = () => {
-      if (
-        window.innerHeight + document.documentElement.scrollTop >=
-          document.documentElement.scrollHeight - 100 &&
-        !loading &&
-        hasMore
-      ) {
+      if (window.innerHeight + document.documentElement.scrollTop >= document.documentElement.scrollHeight - 100 && !loading && hasMore) {
         loadGames();
       }
     };
@@ -155,21 +137,23 @@ function AllGamesPage() {
       <Header />
       <main>
         <section>
+          {/* Titre centré */}
+          <div style={{ textAlign: "center", marginBottom: "20px" }}>
+            <h1>Tous les Jeux</h1>
+          </div>
+  
+          {/* Filtres horizontaux espacés */}
           <div
             style={{
               display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
+              justifyContent: "space-around", // Espacement uniforme entre les filtres
+              flexWrap: "wrap", // Permet le passage sur plusieurs lignes si nécessaire
+              marginBottom: "30px" // Espacement entre les filtres et le contenu
             }}
           >
-            <h1>Tous les Jeux</h1>
             <div className="select-container">
               <label htmlFor="letter">Filtrer par Lettre : </label>
-              <select
-                onChange={handleLetterChange}
-                value={currentLetter}
-                aria-label="Filtrer par Lettre"
-              >
+              <select onChange={handleLetterChange} value={currentLetter} aria-label="Filtrer par Lettre">
                 <option value="">Tous</option>
                 {[..."ABCDEFGHIJKLMNOPQRSTUVWXYZ"].map((letter) => (
                   <option key={letter} value={letter}>
@@ -178,13 +162,10 @@ function AllGamesPage() {
                 ))}
               </select>
             </div>
+  
             <div className="select-container">
               <label htmlFor="genre">Filtrer par Genre : </label>
-              <select
-                onChange={handleGenreChange}
-                value={selectedGenre}
-                aria-label="Filtrer par Genre"
-              >
+              <select onChange={handleGenreChange} value={selectedGenre} aria-label="Filtrer par Genre">
                 <option value="">Tous</option>
                 {genres.map((genre) => (
                   <option key={genre.id} value={genre.id}>
@@ -193,15 +174,11 @@ function AllGamesPage() {
                 ))}
               </select>
             </div>
+  
             <div className="select-container">
               <label htmlFor="platform">Filtrer par Plateforme : </label>
-              <select
-                onChange={handlePlatformChange}
-                value={selectedPlatform}
-                aria-label="Filtrer par Plateforme"
-              >
+              <select onChange={handlePlatformChange} value={selectedPlatform} aria-label="Filtrer par Plateforme">
                 <option value="">Toutes</option>
-                {/* Remplacez les options ci-dessous par les plateformes que vous souhaitez afficher */}
                 <option value="1">PlayStation</option>
                 <option value="2">Xbox</option>
                 <option value="3">PC</option>
@@ -210,7 +187,16 @@ function AllGamesPage() {
                 <option value="15">Xbox 360</option>
               </select>
             </div>
+  
+            <div className="select-container">
+              <label htmlFor="sortOrder">Trier par : </label>
+              <select onChange={handleSortOrderChange} value={sortOrder} aria-label="Trier par">
+                <option value="rating">Note</option>
+                <option value="released">Date de sortie</option>
+              </select>
+            </div>
           </div>
+  
           <div className="container container-all-games-page">
             {games.map((game) => (
               <GameCard key={game.id} game={game} />
@@ -221,6 +207,6 @@ function AllGamesPage() {
       <Footer />
     </>
   );
-}
+};
 
 export default AllGamesPage;
