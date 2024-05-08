@@ -73,7 +73,6 @@ html {
 }
 
 .container-article {
-  background: -webkit-gradient(linear, left bottom, left top, from(rgb(34, 34, 34)), color-stop(50%, rgb(1, 29, 60)), color-stop(100%, rgb(0, 56, 116)), color-stop(222%, rgb(34, 34, 34)), color-stop(222%, rgb(2, 0, 36)), color-stop(333%, rgb(9, 9, 121)));
   background: linear-gradient(0deg, rgb(34, 34, 34) 0%, rgb(1, 29, 60) 50%, rgb(0, 56, 116) 100%, rgb(34, 34, 34) 222%, rgb(2, 0, 36) 222%, rgb(9, 9, 121) 333%);
   border-radius: 60px;
   padding: 20px 0;
@@ -160,8 +159,6 @@ header {
           align-items: center;
 }
 header .container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -194,16 +191,7 @@ header .search-bar input[type=text] {
   border: 1px solid #555;
   border-radius: 4px;
 }
-header .search-bar input[type=text]::-webkit-input-placeholder {
-  color: #666;
-}
 header .search-bar input[type=text]::-moz-placeholder {
-  color: #666;
-}
-header .search-bar input[type=text]:-ms-input-placeholder {
-  color: #666;
-}
-header .search-bar input[type=text]::-ms-input-placeholder {
   color: #666;
 }
 header .search-bar input[type=text]::placeholder {
@@ -299,52 +287,32 @@ footer .container svg:hover {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-column-gap: 2%;
-     -moz-column-gap: 2%;
-          column-gap: 2%;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  -moz-column-gap: 2%;
+       column-gap: 2%;
   row-gap: 30px;
-  -webkit-box-align: stretch;
-      -ms-flex-align: stretch;
-          align-items: stretch;
+  align-items: stretch;
 }
 .container-all-games-page .container-article {
   width: 20%;
   border-radius: 15px;
   padding: 0;
-  height: auto;
-  -webkit-transition: -webkit-transform 0.3s ease;
-  transition: -webkit-transform 0.3s ease;
   transition: transform 0.3s ease;
-  transition: transform 0.3s ease, -webkit-transform 0.3s ease;
 }
 .container-all-games-page .container-article:hover {
-  -webkit-transform: scale(1.05);
-          transform: scale(1.05);
+  transform: scale(1.05);
 }
 .container-all-games-page .container-article .game-card {
   padding: 0;
   width: 100%;
-  height: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
   border-radius: 15px;
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
+  flex-grow: 1;
 }
 .container-all-games-page .container-article .game-card p:before {
   content: "•";
@@ -356,11 +324,12 @@ footer .container svg:hover {
 }
 .container-all-games-page .container-article .game-card .game-img {
   width: 100%;
-  height: auto;
-  padding-bottom: 100%;
+  height: 0;
+  padding-bottom: 56.25%;
   position: relative;
 }
-.container-all-games-page .container-article .game-card .game-img img, .container-all-games-page .container-article .game-card .game-img video {
+.container-all-games-page .container-article .game-card .game-img img,
+.container-all-games-page .container-article .game-card .game-img video {
   width: 100%;
   height: 100%;
   position: absolute;
@@ -371,46 +340,18 @@ footer .container svg:hover {
   border-radius: 15px 15px 0 0;
 }
 .container-all-games-page .container-article .game-card .game-info {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   width: 95%;
-  height: 100%;
   margin: 15px auto;
   text-align: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  justify-content: space-between;
 }
 .container-all-games-page .container-article .game-card .game-info .game-name-numbers {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
 }
 .container-all-games-page .container-article .game-card .game-info .game-name-numbers .game-rating-released {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  gap: 10px;
-}
-.container-all-games-page .container-article .game-card .game-info .game-genres {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
@@ -422,8 +363,6 @@ footer .container svg:hover {
   gap: 10px;
 }
 .container-all-games-page .container-article .game-card .game-info .game-platform {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
@@ -763,46 +702,28 @@ footer .container svg:hover {
 }
 
 .new-all-games {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  justify-content: space-between;
   gap: 5%;
 }
 .new-all-games .container {
   margin: 0;
 }
 .new-all-games .container .browse-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: column;
+  align-items: center;
   width: 95%;
   margin: 20px auto 10px auto;
   gap: 15px;
 }
 .new-all-games .container .browse-container .browse-game-card {
   border-radius: 15px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  flex-direction: row;
   color: #ccc;
   gap: 15px;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
 }
 .new-all-games .container .browse-container .browse-game-card .browse-game-info {
   width: 70%;
@@ -824,16 +745,9 @@ footer .container svg:hover {
 .filter {
   width: 90%;
   margin: auto;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: left !important;
-      -ms-flex-pack: left !important;
-          justify-content: left !important;
+  flex-direction: row;
+  justify-content: left !important;
   gap: 15px;
   font-family: "Roboto", sans-serif;
 }
@@ -841,8 +755,6 @@ footer .container svg:hover {
   font-size: 1rem;
 }
 .filter .filter-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   gap: 10px;
 }
@@ -856,44 +768,76 @@ footer .container svg:hover {
 }
 
 .select-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   margin-bottom: 15px;
+  gap: 10px;
 }
 .select-container label {
   margin-right: 10px;
   font-weight: bold;
-  color: #007bff; /* Bleu plus moderne */
-  font-size: 16px;
+  color: #e0e0e0;
+  font-size: 14px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 .select-container select {
-  padding: 12px;
-  border-radius: 8px;
-  border: 2px solid #007bff; /* Bordure plus contrastée */
-  background-color: #f0f8ff;
-  color: #007bff; /* Texte bleu moderne */
+  padding: 10px 14px;
+  border-radius: 6px;
+  border: 1px solid #4f4f4f;
+  background-color: #212121;
+  color: #e0e0e0;
   font-size: 14px;
   cursor: pointer;
-  -webkit-transition: all 0.3s ease;
-  transition: all 0.3s ease; /* Transition plus fluide */
-  -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Légère ombre pour donner de la profondeur */
+  transition: all 0.2s ease-in-out;
+  box-shadow: none;
 }
 .select-container select:focus {
   outline: none;
-  border-color: #0056b3; /* Couleur bordure en focus */
-  background-color: #ffffff; /* Couleur de fond en focus */
-  -webkit-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Ombre plus prononcée lors du focus */
+  border-color: #757575;
+  background-color: #333333;
+}
+.select-container select:focus .select-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  gap: 10px;
+  font-family: "Arial", sans-serif;
+}
+.select-container select:focus .select-container label {
+  margin-right: 10px;
+  font-weight: bold;
+  color: #e0e0e0;
+  font-size: 14px;
+}
+.select-container select:focus .select-container select {
+  padding: 10px 14px;
+  border-radius: 6px;
+  border: 1px solid #4f4f4f;
+  background-color: #212121;
+  color: #e0e0e0;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  box-shadow: none;
+  font-family: inherit;
+}
+.select-container select:focus .select-container select:focus {
+  outline: none;
+  border-color: #757575;
+  background-color: #333333;
+}
+.select-container select:focus .select-container select:hover {
+  border-color: #757575;
+}
+.select-container select:focus .select-container select option {
+  color: #e0e0e0;
+  background-color: #212121;
+  font-family: inherit;
 }
 .select-container select:hover {
-  border-color: #0056b3; /* Couleur bordure en hover */
-  background-color: #e7f1ff; /* Fond légèrement différent en hover */
+  border-color: #757575;
 }
 .select-container select option {
-  color: #007bff; /* Texte des options */
+  color: #e0e0e0;
+  background-color: #212121;
 }/*# sourceMappingURL=style.css.map */
