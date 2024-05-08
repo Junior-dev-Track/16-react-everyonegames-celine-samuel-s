@@ -121,7 +121,7 @@ h5 {
 }
 
 p {
-  line-height: 1rem;
+  line-height: 0.7rem;
   font-family: "Roboto", sans-serif;
   color: #ccc;
   line-height: 1.4rem;
@@ -147,21 +147,30 @@ button:hover {
 /*        HEADER       */
 /***********************/
 header {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgb(51, 51, 51)), color-stop(100%, rgb(34, 34, 34)), color-stop(222%, rgb(34, 34, 34)), color-stop(222%, rgb(2, 0, 36)), color-stop(333%, rgb(9, 9, 121)));
   background: linear-gradient(180deg, rgb(51, 51, 51) 0%, rgb(34, 34, 34) 100%, rgb(34, 34, 34) 222%, rgb(2, 0, 36) 222%, rgb(9, 9, 121) 333%);
   color: #ccc;
   padding: 10px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 header .container {
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
 header .container .logo {
   width: 100px;
   height: auto;
-  filter: brightness(0) invert(1) contrast(0.5);
+  -webkit-filter: brightness(0) invert(1) contrast(0.5);
+          filter: brightness(0) invert(1) contrast(0.5);
 }
 header .search-bar {
   background-color: #333;
@@ -174,7 +183,8 @@ header .search-bar input[type=text] {
   width: 100%;
   padding: 8px 15px;
   margin: 0;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   font-size: 22px;
   color: #ccc;
   background-color: #222;
@@ -190,7 +200,8 @@ header .search-bar input[type=text]::placeholder {
 header .search-bar input[type=text]:focus {
   outline: none;
   border-color: #007BFF;
-  box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+  -webkit-box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+          box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
 }
 header nav {
   justify-self: right;
@@ -224,7 +235,8 @@ header .search-results {
   margin-top: 0px;
   background-color: #333;
   border-radius: 0 0 5px 5px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   z-index: 5;
   overflow: hidden;
 }
@@ -249,10 +261,17 @@ footer {
   padding: 10px 0;
 }
 footer .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: nowrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
 }
 footer .container svg {
   width: 50px;
@@ -265,6 +284,8 @@ footer .container svg:hover {
 }
 
 .container-all-games-page {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -286,7 +307,10 @@ footer .container svg:hover {
   padding: 0;
   width: 100%;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   border-radius: 15px;
   flex-grow: 1;
 }
@@ -329,16 +353,27 @@ footer .container svg:hover {
 }
 .container-all-games-page .container-article .game-card .game-info .game-name-numbers .game-rating-released {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   gap: 10px;
 }
 .container-all-games-page .container-article .game-card .game-info .game-platform {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   gap: 10px;
-  flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   color: #ccc;
 }
 .container-all-games-page .container-article .game-card .game-info .game-platform li svg {
@@ -350,9 +385,16 @@ footer .container svg:hover {
 /*  POPULAR GAMES AND NEW GAMES  */
 /*********************************/
 .game_popular {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   text-align: center;
 }
 .game_popular a {
@@ -375,59 +417,108 @@ footer .container svg:hover {
   font-weight: bold;
   border-radius: 5px;
   margin-bottom: 20px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 .game_popular .navigation-buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   width: 100%;
   margin-top: 10px;
 }
 
 .container-game-page {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 .container-game-page .game-images {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 70%;
   height: auto;
   gap: 20px;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
-.container-game-page .game-images img {
+.container-game-page .game-images .main-img {
   width: 80%;
-  height: auto;
+  height: 350px;
+}
+.container-game-page .game-images .main-img img {
+  width: 100%;
+  height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
 }
 .container-game-page .game-images .other-images {
-  width: 100%;
+  width: 90%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   gap: 10px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 .container-game-page .game-images .other-images .flex-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   gap: 10px;
   width: inherit;
 }
 .container-game-page .game-images .other-images .flex-container .container-movies {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   gap: 10px;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 .container-game-page .game-images .other-images .flex-container .game-movies,
 .container-game-page .game-images .other-images .flex-container .game-screenshots {
-  flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   gap: 10px;
   overflow: hidden;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 .container-game-page .game-images .other-images .flex-container .game-movies img,
 .container-game-page .game-images .other-images .flex-container .game-movies video,
@@ -440,47 +531,122 @@ footer .container svg:hover {
 }
 .container-game-page .game-info-important {
   margin: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  gap: 5px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 20px;
   width: 30%;
 }
-.container-game-page .game-info-important .list-container {
-  margin-left: 10px;
+.container-game-page .game-info-important .game-info-important-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 10px;
 }
-.container-game-page .game-info-important .information-content {
-  margin-bottom: 5px;
+.container-game-page .game-info-important .game-info-important-content .list-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 10px;
 }
-.container-game-page .game-info-important .information-content .game-stores {
+.container-game-page .game-info-important .game-info-important-content .list-container .game-genres {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  gap: 10px;
+}
+.container-game-page .game-info-important .game-info-important-content .information-content {
+  text-align: right;
+}
+.container-game-page .game-info-important .game-info-important-content .information-content .game-stores {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   margin: 10px 0;
-  justify-content: center;
-  flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   row-gap: 20px;
 }
-.container-game-page .game-info-important .information-content .game-stores li {
+.container-game-page .game-info-important .game-info-important-content .information-content .game-stores li {
   margin: 0 5px;
 }
-.container-game-page .game-info-important .information-content .game-platform {
+.container-game-page .game-info-important .game-info-important-content .information-content .game-platform {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   gap: 5px;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
-.container-game-page .game-info-important .information-content .game-platform svg {
+.container-game-page .game-info-important .game-info-important-content .information-content .game-platform svg {
   width: 25px;
   height: auto;
 }
-.container-game-page .game-info-important .game-metacritics {
+.container-game-page .game-info-important .game-info-important-content .information-content .a-website {
+  color: #ccc;
+}
+.container-game-page .game-info-important .game-info-important-content .information-content .a-website:hover {
+  color: #007BFF;
+}
+.container-game-page .game-info-important .small-infos {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 5px;
-  justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.container-game-page .game-info-important .game-metacritics {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 10px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 .container-game-page .game-info-important .game-metacritics .game-metacritics-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  gap: 3px;
+  gap: 5px;
 }
 .container-game-page .game-info-important .game-metacritics .game-metacritics-info p {
   font-size: 1rem;
@@ -493,8 +659,13 @@ footer .container svg:hover {
   border-radius: 5%;
   padding: 5px;
 }
+.container-game-page .game-info-important .aButton:hover {
+  background-color: rgba(0, 98, 204, 0.5);
+}
 
 .container-game-page-description {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 .container-game-page-description h2 {
@@ -509,9 +680,15 @@ footer .container svg:hover {
   margin: 20px;
 }
 .container-game-page-description .game-info-others .game-tags {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   gap: 10px;
 }
 .container-game-page-description .game-info-others .game-tags li {
