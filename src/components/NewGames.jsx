@@ -30,7 +30,7 @@ export default function FutureGames() {
     return (
         <>
             {/* <hr /> */}
-        <section className="container container-article">
+        <section className="container container-article container-news">
             <h2 className='popular'>Upcoming 2024 Releases</h2>
                 <article>
                 {games.length > 0 && games[currentIndex] && (
