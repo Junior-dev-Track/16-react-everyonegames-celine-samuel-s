@@ -9,6 +9,7 @@
     font-weight: bold;
     color: #e0e0e0; // Texte clair pour correspondre au style sombre
     font-size: 14px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; // Inhérente à celle définie dans .select-container
   }
 
   select {
@@ -23,7 +24,50 @@
     box-shadow: none; // Retrait des ombres pour un style plus minimaliste
 
     &:focus {
-      outline: none;
+      outline: none;.select-container {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+        gap: 10px; // Espacement entre chaque filtre
+        font-family: "Arial", sans-serif; // Changez ici la famille de polices
+      
+        label {
+          margin-right: 10px;
+          font-weight: bold;
+          color: #e0e0e0; // Texte clair pour correspondre au style sombre
+          font-size: 14px;
+        }
+      
+        select {
+          padding: 10px 14px; // Ajout de l'espacement intérieur
+          border-radius: 6px;
+          border: 1px solid #4f4f4f; // Bordure grise pour correspondre à la capture
+          background-color: #212121; // Couleur de fond sombre
+          color: #e0e0e0; // Texte clair pour correspondre au style sombre
+          font-size: 14px;
+          cursor: pointer;
+          transition: all 0.2s ease-in-out;
+          box-shadow: none; // Retrait des ombres pour un style plus minimaliste
+          font-family: inherit; // Inhérente à celle définie dans .select-container
+      
+          &:focus {
+            outline: none;
+            border-color: #757575; // Bordure plus claire lors du focus
+            background-color: #333333; // Légère variation de la couleur de fond au focus
+          }
+      
+          &:hover {
+            border-color: #757575; // Bordure plus claire lors du survol
+          }
+      
+          option {
+            color: #e0e0e0; // Texte clair
+            background-color: #212121; // Couleur de fond sombre
+            font-family: inherit; // Inhérente à celle définie dans .select-container
+          }
+        }
+      }
+      
       border-color: #757575; // Bordure plus claire lors du focus
       background-color: #333333; // Légère variation de la couleur de fond au focus
     }
