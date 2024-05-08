@@ -95,8 +95,6 @@ function GamePage() {
                             resetZoom={resetZoom}
                             zoomedImage={zoomedImage}
                             setZoomedImage={setZoomedImage}
-                            isZoomed={isZoomed}
-                            setIsZoomed={setIsZoomed}
                         />
                         <Screenshots
                             id={id}
